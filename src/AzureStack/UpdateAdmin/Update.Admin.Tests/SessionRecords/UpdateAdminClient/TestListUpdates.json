@@ -1,0 +1,136 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/resourcegroups/System.local/providers/Microsoft.Update.Admin/updateLocations/?api-version=2016-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Jlc291cmNlZ3JvdXBzL1N5c3RlbS5sb2NhbC9wcm92aWRlcnMvTWljcm9zb2Z0LlVwZGF0ZS5BZG1pbi91cGRhdGVMb2NhdGlvbnMvP2FwaS12ZXJzaW9uPTIwMTYtMDUtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "23f04b5e-71d0-49fe-944a-8069466e0ff8"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/resourceGroups/System.local/providers/Microsoft.Update.Admin/updateLocations/local\",\r\n      \"name\": \"local\",\r\n      \"type\": \"Microsoft.Update.Admin/updateLocations\",\r\n      \"location\": \"local\",\r\n      \"tags\": {},\r\n      \"properties\": {\r\n        \"currentVersion\": \"1.0.170928.1\",\r\n        \"currentOemVersion\": \"0.0\",\r\n        \"state\": \"AppliedSuccessfully\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "350"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 06 Oct 2017 03:14:38 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvy2fIU/lYUhCgIAKsLZwKcDCLvOZqYWBJbDn/07gDJjuC21FiCAl73/csj3gN1Wli/zp/T0TTQXiErzGy1yMwnC0NuxzrsAGU4EnOIcvnVm7WonxpKb6OQXKQB8g52nfN5g0h4PGICl6NBsA2tVmO"
+        ],
+        "x-ms-correlation-request-id": [
+          "cb38a30d-49f1-42b7-88ed-64034ecc703f"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14838"
+        ],
+        "x-ms-request-id": [
+          "cb38a30d-49f1-42b7-88ed-64034ecc703f"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171006T031438Z:cb38a30d-49f1-42b7-88ed-64034ecc703f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/resourcegroups/System.local/providers/Microsoft.Update.Admin/updateLocations/local/updates?api-version=2016-05-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Jlc291cmNlZ3JvdXBzL1N5c3RlbS5sb2NhbC9wcm92aWRlcnMvTWljcm9zb2Z0LlVwZGF0ZS5BZG1pbi91cGRhdGVMb2NhdGlvbnMvbG9jYWwvdXBkYXRlcz9hcGktdmVyc2lvbj0yMDE2LTA1LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e32d848e-0a96-43ef-acee-3cef25de1e29"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Update.Admin.UpdateAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "12"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 06 Oct 2017 03:14:40 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvW4uarkXvnXIqmaULX3PMLfIRRFypR/px6wwNlOI1RAmW2IUuf2/+KO8IGDDutz1jpVkZo26yN3nRPYXRN78RHYvFv6hYgws8c8/LVEtEGa6h0L8Cw9+xH7EWHwb0P4rfu+g/oxkTcWON84LPij29"
+        ],
+        "x-ms-correlation-request-id": [
+          "9f28865e-9d49-493b-b259-9698cd33ffce"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14837"
+        ],
+        "x-ms-request-id": [
+          "9f28865e-9d49-493b-b259-9698cd33ffce"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171006T031440Z:9f28865e-9d49-493b-b259-9698cd33ffce"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "0ff0bbbe-d68d-4314-8f68-80a808b5a6ec"
+  }
+}
