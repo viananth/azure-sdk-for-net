@@ -38,15 +38,14 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin.Models
         /// <param name="sku">Product SKU.</param>
         /// <param name="billingPartNumber">Billing part number.</param>
         /// <param name="galleryItemIdentity">Gallery item identity.</param>
-        /// <param name="iconUris">Information about gallery icons.
-        /// Deprecated.</param>
+        /// <param name="iconUris">Information about gallery icons.</param>
         /// <param name="payloadLength">Size in bytes.</param>
         /// <param name="productKind">The kind. E.g.
         /// VirtualMachineProductProperties.ProductKind or WebApp,
         /// SolutionTemplate.</param>
         /// <param name="productProperties">the product properties. At the
         /// moment only VirtualMachineProductProperties is allowed.</param>
-        public ProductBase(string displayName = default(string), string description = default(string), string publisherDisplayName = default(string), string publisherIdentifier = default(string), string offer = default(string), string offerVersion = default(string), string sku = default(string), string billingPartNumber = default(string), string galleryItemIdentity = default(string), string iconUris = default(string), long? payloadLength = default(long?), string productKind = default(string), string productProperties = default(string))
+        public ProductBase(string displayName = default(string), string description = default(string), string publisherDisplayName = default(string), string publisherIdentifier = default(string), string offer = default(string), string offerVersion = default(string), string sku = default(string), string billingPartNumber = default(string), string galleryItemIdentity = default(string), GalleryIcons iconUris = default(GalleryIcons), long? payloadLength = default(long?), string productKind = default(string), string productProperties = default(string))
         {
             DisplayName = displayName;
             Description = description;
@@ -124,10 +123,10 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin.Models
         public string GalleryItemIdentity { get; set; }
 
         /// <summary>
-        /// Gets or sets information about gallery icons. Deprecated.
+        /// Gets or sets information about gallery icons.
         /// </summary>
         [JsonProperty(PropertyName = "iconUris")]
-        public string IconUris { get; set; }
+        public GalleryIcons IconUris { get; set; }
 
         /// <summary>
         /// Gets or sets size in bytes.

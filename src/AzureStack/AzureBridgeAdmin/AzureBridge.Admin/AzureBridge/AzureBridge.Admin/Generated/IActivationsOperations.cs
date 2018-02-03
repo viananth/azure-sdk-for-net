@@ -45,6 +45,9 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         /// <summary>
         /// Return product name.
         /// </summary>
+        /// <param name='resourceGroup'>
+        /// The resource group the resource is located under.
+        /// </param>
         /// <param name='activationName'>
         /// Name of the activation.
         /// </param>
@@ -63,7 +66,7 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ActivationResource>> GetWithHttpMessagesAsync(string activationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ActivationResource>> GetWithHttpMessagesAsync(string resourceGroup, string activationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Create a new activation.
         /// </summary>

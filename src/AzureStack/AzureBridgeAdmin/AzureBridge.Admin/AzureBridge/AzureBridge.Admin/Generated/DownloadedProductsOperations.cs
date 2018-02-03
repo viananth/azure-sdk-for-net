@@ -53,6 +53,9 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         /// <summary>
         /// Get a list of downloaded products.
         /// </summary>
+        /// <param name='resourceGroup'>
+        /// The resource group the resource is located under.
+        /// </param>
         /// <param name='activationName'>
         /// Name of the activation.
         /// </param>
@@ -77,11 +80,15 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<DownloadedProductResource>>> ListWithHttpMessagesAsync(string activationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<DownloadedProductResource>>> ListWithHttpMessagesAsync(string resourceGroup, string activationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroup == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroup");
             }
             if (activationName == null)
             {
@@ -98,14 +105,16 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroup", resourceGroup);
                 tracingParameters.Add("activationName", activationName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.AzureBridge.Admin/{activationName}/downloadedProducts").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.AzureBridge.Admin/{activationName}/downloadedProducts").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroup}", System.Uri.EscapeDataString(resourceGroup));
             _url = _url.Replace("{activationName}", System.Uri.EscapeDataString(activationName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
@@ -240,6 +249,9 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         /// <summary>
         /// Get a downloaded product.
         /// </summary>
+        /// <param name='resourceGroup'>
+        /// The resource group the resource is located under.
+        /// </param>
         /// <param name='activationName'>
         /// Name of the activation.
         /// </param>
@@ -267,11 +279,15 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<DownloadedProductResource>> GetWithHttpMessagesAsync(string activationName, string productName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<DownloadedProductResource>> GetWithHttpMessagesAsync(string resourceGroup, string activationName, string productName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroup == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroup");
             }
             if (activationName == null)
             {
@@ -292,6 +308,7 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroup", resourceGroup);
                 tracingParameters.Add("activationName", activationName);
                 tracingParameters.Add("productName", productName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -299,8 +316,9 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.AzureBridge.Admin/activations/{activationName}/downloadedProducts/{productName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.AzureBridge.Admin/activations/{activationName}/downloadedProducts/{productName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroup}", System.Uri.EscapeDataString(resourceGroup));
             _url = _url.Replace("{activationName}", System.Uri.EscapeDataString(activationName));
             _url = _url.Replace("{productName}", System.Uri.EscapeDataString(productName));
             List<string> _queryParameters = new List<string>();

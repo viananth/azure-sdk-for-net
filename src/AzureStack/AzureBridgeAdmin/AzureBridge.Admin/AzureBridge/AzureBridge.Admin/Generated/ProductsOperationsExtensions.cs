@@ -27,9 +27,15 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static IPage<ProductResource> List(this IProductsOperations operations)
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
+            /// </param>
+            /// <param name='activationName'>
+            /// Name of the activation.
+            /// </param>
+            public static IPage<ProductResource> List(this IProductsOperations operations, string resourceGroup, string activationName)
             {
-                return operations.ListAsync().GetAwaiter().GetResult();
+                return operations.ListAsync(resourceGroup, activationName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -38,12 +44,18 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
+            /// </param>
+            /// <param name='activationName'>
+            /// Name of the activation.
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ProductResource>> ListAsync(this IProductsOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<ProductResource>> ListAsync(this IProductsOperations operations, string resourceGroup, string activationName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroup, activationName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -55,12 +67,18 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
+            /// </param>
+            /// <param name='activationName'>
+            /// Name of the activation.
+            /// </param>
             /// <param name='productName'>
             /// Name of the product.
             /// </param>
-            public static ProductResource Get(this IProductsOperations operations, string productName)
+            public static ProductResource Get(this IProductsOperations operations, string resourceGroup, string activationName, string productName)
             {
-                return operations.GetAsync(productName).GetAwaiter().GetResult();
+                return operations.GetAsync(resourceGroup, activationName, productName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -69,18 +87,110 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
+            /// </param>
+            /// <param name='activationName'>
+            /// Name of the activation.
+            /// </param>
             /// <param name='productName'>
             /// Name of the product.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ProductResource> GetAsync(this IProductsOperations operations, string productName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ProductResource> GetAsync(this IProductsOperations operations, string resourceGroup, string activationName, string productName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(productName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroup, activationName, productName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
+            }
+
+            /// <summary>
+            /// Downloads a product from azure marketplace.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
+            /// </param>
+            /// <param name='activationName'>
+            /// Name of the activation.
+            /// </param>
+            /// <param name='productName'>
+            /// Name of the product.
+            /// </param>
+            public static void Download(this IProductsOperations operations, string resourceGroup, string activationName, string productName)
+            {
+                operations.DownloadAsync(resourceGroup, activationName, productName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Downloads a product from azure marketplace.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
+            /// </param>
+            /// <param name='activationName'>
+            /// Name of the activation.
+            /// </param>
+            /// <param name='productName'>
+            /// Name of the product.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task DownloadAsync(this IProductsOperations operations, string resourceGroup, string activationName, string productName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.DownloadWithHttpMessagesAsync(resourceGroup, activationName, productName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Downloads a product from azure marketplace.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
+            /// </param>
+            /// <param name='activationName'>
+            /// Name of the activation.
+            /// </param>
+            /// <param name='productName'>
+            /// Name of the product.
+            /// </param>
+            public static void BeginDownload(this IProductsOperations operations, string resourceGroup, string activationName, string productName)
+            {
+                operations.BeginDownloadAsync(resourceGroup, activationName, productName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Downloads a product from azure marketplace.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
+            /// </param>
+            /// <param name='activationName'>
+            /// Name of the activation.
+            /// </param>
+            /// <param name='productName'>
+            /// Name of the product.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginDownloadAsync(this IProductsOperations operations, string resourceGroup, string activationName, string productName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginDownloadWithHttpMessagesAsync(resourceGroup, activationName, productName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>

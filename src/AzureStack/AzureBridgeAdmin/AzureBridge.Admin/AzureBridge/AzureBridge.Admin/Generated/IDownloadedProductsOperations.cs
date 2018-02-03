@@ -26,6 +26,9 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         /// <summary>
         /// Get a list of downloaded products.
         /// </summary>
+        /// <param name='resourceGroup'>
+        /// The resource group the resource is located under.
+        /// </param>
         /// <param name='activationName'>
         /// Name of the activation.
         /// </param>
@@ -44,10 +47,13 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<DownloadedProductResource>>> ListWithHttpMessagesAsync(string activationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<DownloadedProductResource>>> ListWithHttpMessagesAsync(string resourceGroup, string activationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get a downloaded product.
         /// </summary>
+        /// <param name='resourceGroup'>
+        /// The resource group the resource is located under.
+        /// </param>
         /// <param name='activationName'>
         /// Name of the activation.
         /// </param>
@@ -69,7 +75,7 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<DownloadedProductResource>> GetWithHttpMessagesAsync(string activationName, string productName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<DownloadedProductResource>> GetWithHttpMessagesAsync(string resourceGroup, string activationName, string productName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get a list of downloaded products.
         /// </summary>
