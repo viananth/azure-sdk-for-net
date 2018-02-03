@@ -55,12 +55,15 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
+            /// </param>
             /// <param name='activationName'>
             /// Name of the activation.
             /// </param>
-            public static ActivationResource Get(this IActivationsOperations operations, string activationName)
+            public static ActivationResource Get(this IActivationsOperations operations, string resourceGroup, string activationName)
             {
-                return operations.GetAsync(activationName).GetAwaiter().GetResult();
+                return operations.GetAsync(resourceGroup, activationName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -69,15 +72,18 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
+            /// </param>
             /// <param name='activationName'>
             /// Name of the activation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ActivationResource> GetAsync(this IActivationsOperations operations, string activationName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ActivationResource> GetAsync(this IActivationsOperations operations, string resourceGroup, string activationName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(activationName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroup, activationName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

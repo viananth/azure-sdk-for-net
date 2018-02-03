@@ -26,6 +26,12 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         /// <summary>
         /// Return product name.
         /// </summary>
+        /// <param name='resourceGroup'>
+        /// The resource group the resource is located under.
+        /// </param>
+        /// <param name='activationName'>
+        /// Name of the activation.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -41,10 +47,16 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<ProductResource>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<ProductResource>>> ListWithHttpMessagesAsync(string resourceGroup, string activationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Return product name.
         /// </summary>
+        /// <param name='resourceGroup'>
+        /// The resource group the resource is located under.
+        /// </param>
+        /// <param name='activationName'>
+        /// Name of the activation.
+        /// </param>
         /// <param name='productName'>
         /// Name of the product.
         /// </param>
@@ -63,7 +75,57 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ProductResource>> GetWithHttpMessagesAsync(string productName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ProductResource>> GetWithHttpMessagesAsync(string resourceGroup, string activationName, string productName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Downloads a product from azure marketplace.
+        /// </summary>
+        /// <param name='resourceGroup'>
+        /// The resource group the resource is located under.
+        /// </param>
+        /// <param name='activationName'>
+        /// Name of the activation.
+        /// </param>
+        /// <param name='productName'>
+        /// Name of the product.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> DownloadWithHttpMessagesAsync(string resourceGroup, string activationName, string productName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Downloads a product from azure marketplace.
+        /// </summary>
+        /// <param name='resourceGroup'>
+        /// The resource group the resource is located under.
+        /// </param>
+        /// <param name='activationName'>
+        /// Name of the activation.
+        /// </param>
+        /// <param name='productName'>
+        /// Name of the product.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse> BeginDownloadWithHttpMessagesAsync(string resourceGroup, string activationName, string productName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Return product name.
         /// </summary>
