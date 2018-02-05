@@ -29,12 +29,12 @@ namespace Microsoft.AzureStack.Management.Update.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='location'>
-            /// Location of the AzureStack instance.
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
             /// </param>
-            public static IEnumerable<UpdateLocation> List(this IUpdateLocationsOperations operations, string location)
+            public static IEnumerable<UpdateLocation> List(this IUpdateLocationsOperations operations, string resourceGroup)
             {
-                return operations.ListAsync(location).GetAwaiter().GetResult();
+                return operations.ListAsync(resourceGroup).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -43,15 +43,15 @@ namespace Microsoft.AzureStack.Management.Update.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='location'>
-            /// Location of the AzureStack instance.
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IEnumerable<UpdateLocation>> ListAsync(this IUpdateLocationsOperations operations, string location, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IEnumerable<UpdateLocation>> ListAsync(this IUpdateLocationsOperations operations, string resourceGroup, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(location, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroup, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -63,15 +63,15 @@ namespace Microsoft.AzureStack.Management.Update.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='location'>
-            /// Location of the AzureStack instance.
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
             /// </param>
             /// <param name='updateLocation'>
             /// The name of the update location.
             /// </param>
-            public static UpdateLocation Get(this IUpdateLocationsOperations operations, string location, string updateLocation)
+            public static UpdateLocation Get(this IUpdateLocationsOperations operations, string resourceGroup, string updateLocation)
             {
-                return operations.GetAsync(location, updateLocation).GetAwaiter().GetResult();
+                return operations.GetAsync(resourceGroup, updateLocation).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -80,8 +80,8 @@ namespace Microsoft.AzureStack.Management.Update.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='location'>
-            /// Location of the AzureStack instance.
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
             /// </param>
             /// <param name='updateLocation'>
             /// The name of the update location.
@@ -89,9 +89,9 @@ namespace Microsoft.AzureStack.Management.Update.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<UpdateLocation> GetAsync(this IUpdateLocationsOperations operations, string location, string updateLocation, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<UpdateLocation> GetAsync(this IUpdateLocationsOperations operations, string resourceGroup, string updateLocation, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(location, updateLocation, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroup, updateLocation, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
