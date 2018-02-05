@@ -26,8 +26,8 @@ namespace Microsoft.AzureStack.Management.Update.Admin
         /// <summary>
         /// Get the list of update locations
         /// </summary>
-        /// <param name='location'>
-        /// Location of the AzureStack instance.
+        /// <param name='resourceGroup'>
+        /// The resource group the resource is located under.
         /// </param>
         /// <param name='updateLocation'>
         /// The name of the update location.
@@ -47,12 +47,12 @@ namespace Microsoft.AzureStack.Management.Update.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<Update>>> ListWithHttpMessagesAsync(string location, string updateLocation, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<Update>>> ListWithHttpMessagesAsync(string resourceGroup, string updateLocation, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get a specific update at an update location.
         /// </summary>
-        /// <param name='location'>
-        /// Location of the AzureStack instance.
+        /// <param name='resourceGroup'>
+        /// The resource group the resource is located under.
         /// </param>
         /// <param name='updateLocation'>
         /// The name of the update location.
@@ -75,12 +75,12 @@ namespace Microsoft.AzureStack.Management.Update.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Update>> GetWithHttpMessagesAsync(string location, string updateLocation, string update, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Update>> GetWithHttpMessagesAsync(string resourceGroup, string updateLocation, string update, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Apply a specific update at an update location.
         /// </summary>
-        /// <param name='location'>
-        /// Location of the AzureStack instance.
+        /// <param name='resourceGroup'>
+        /// The resource group the resource is located under.
         /// </param>
         /// <param name='updateLocation'>
         /// The name of the update location.
@@ -103,12 +103,12 @@ namespace Microsoft.AzureStack.Management.Update.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Update>> ApplyWithHttpMessagesAsync(string location, string updateLocation, string update, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Update>> ApplyWithHttpMessagesAsync(string resourceGroup, string updateLocation, string update, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Apply a specific update at an update location.
         /// </summary>
-        /// <param name='location'>
-        /// Location of the AzureStack instance.
+        /// <param name='resourceGroup'>
+        /// The resource group the resource is located under.
         /// </param>
         /// <param name='updateLocation'>
         /// The name of the update location.
@@ -131,7 +131,7 @@ namespace Microsoft.AzureStack.Management.Update.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Update>> BeginApplyWithHttpMessagesAsync(string location, string updateLocation, string update, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<Update>> BeginApplyWithHttpMessagesAsync(string resourceGroup, string updateLocation, string update, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get the list of update locations
         /// </summary>

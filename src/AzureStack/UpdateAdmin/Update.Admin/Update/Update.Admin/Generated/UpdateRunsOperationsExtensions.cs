@@ -27,8 +27,8 @@ namespace Microsoft.AzureStack.Management.Update.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='location'>
-            /// Location of the AzureStack instance.
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
             /// </param>
             /// <param name='updateLocation'>
             /// The name of the update location.
@@ -36,9 +36,9 @@ namespace Microsoft.AzureStack.Management.Update.Admin
             /// <param name='update'>
             /// Name of the update.
             /// </param>
-            public static IPage<UpdateRun> List(this IUpdateRunsOperations operations, string location, string updateLocation, string update)
+            public static IPage<UpdateRun> List(this IUpdateRunsOperations operations, string resourceGroup, string updateLocation, string update)
             {
-                return operations.ListAsync(location, updateLocation, update).GetAwaiter().GetResult();
+                return operations.ListAsync(resourceGroup, updateLocation, update).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -47,8 +47,8 @@ namespace Microsoft.AzureStack.Management.Update.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='location'>
-            /// Location of the AzureStack instance.
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
             /// </param>
             /// <param name='updateLocation'>
             /// The name of the update location.
@@ -59,9 +59,9 @@ namespace Microsoft.AzureStack.Management.Update.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<UpdateRun>> ListAsync(this IUpdateRunsOperations operations, string location, string updateLocation, string update, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<UpdateRun>> ListAsync(this IUpdateRunsOperations operations, string resourceGroup, string updateLocation, string update, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(location, updateLocation, update, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroup, updateLocation, update, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -73,8 +73,8 @@ namespace Microsoft.AzureStack.Management.Update.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='location'>
-            /// Location of the AzureStack instance.
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
             /// </param>
             /// <param name='updateLocation'>
             /// The name of the update location.
@@ -85,9 +85,9 @@ namespace Microsoft.AzureStack.Management.Update.Admin
             /// <param name='runId'>
             /// Update run identifier.
             /// </param>
-            public static UpdateRun Get(this IUpdateRunsOperations operations, string location, string updateLocation, string update, string runId)
+            public static UpdateRun Get(this IUpdateRunsOperations operations, string resourceGroup, string updateLocation, string update, string runId)
             {
-                return operations.GetAsync(location, updateLocation, update, runId).GetAwaiter().GetResult();
+                return operations.GetAsync(resourceGroup, updateLocation, update, runId).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -96,8 +96,8 @@ namespace Microsoft.AzureStack.Management.Update.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='location'>
-            /// Location of the AzureStack instance.
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
             /// </param>
             /// <param name='updateLocation'>
             /// The name of the update location.
@@ -111,9 +111,9 @@ namespace Microsoft.AzureStack.Management.Update.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<UpdateRun> GetAsync(this IUpdateRunsOperations operations, string location, string updateLocation, string update, string runId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<UpdateRun> GetAsync(this IUpdateRunsOperations operations, string resourceGroup, string updateLocation, string update, string runId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(location, updateLocation, update, runId, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroup, updateLocation, update, runId, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -125,8 +125,8 @@ namespace Microsoft.AzureStack.Management.Update.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='location'>
-            /// Location of the AzureStack instance.
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
             /// </param>
             /// <param name='updateLocation'>
             /// The name of the update location.
@@ -137,9 +137,9 @@ namespace Microsoft.AzureStack.Management.Update.Admin
             /// <param name='runId'>
             /// Update run identifier.
             /// </param>
-            public static void Rerun(this IUpdateRunsOperations operations, string location, string updateLocation, string update, string runId)
+            public static void Rerun(this IUpdateRunsOperations operations, string resourceGroup, string updateLocation, string update, string runId)
             {
-                operations.RerunAsync(location, updateLocation, update, runId).GetAwaiter().GetResult();
+                operations.RerunAsync(resourceGroup, updateLocation, update, runId).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -148,8 +148,8 @@ namespace Microsoft.AzureStack.Management.Update.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='location'>
-            /// Location of the AzureStack instance.
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
             /// </param>
             /// <param name='updateLocation'>
             /// The name of the update location.
@@ -163,9 +163,9 @@ namespace Microsoft.AzureStack.Management.Update.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task RerunAsync(this IUpdateRunsOperations operations, string location, string updateLocation, string update, string runId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task RerunAsync(this IUpdateRunsOperations operations, string resourceGroup, string updateLocation, string update, string runId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.RerunWithHttpMessagesAsync(location, updateLocation, update, runId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.RerunWithHttpMessagesAsync(resourceGroup, updateLocation, update, runId, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -174,8 +174,8 @@ namespace Microsoft.AzureStack.Management.Update.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='location'>
-            /// Location of the AzureStack instance.
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
             /// </param>
             /// <param name='updateLocation'>
             /// The name of the update location.
@@ -186,9 +186,9 @@ namespace Microsoft.AzureStack.Management.Update.Admin
             /// <param name='runId'>
             /// Update run identifier.
             /// </param>
-            public static void BeginRerun(this IUpdateRunsOperations operations, string location, string updateLocation, string update, string runId)
+            public static void BeginRerun(this IUpdateRunsOperations operations, string resourceGroup, string updateLocation, string update, string runId)
             {
-                operations.BeginRerunAsync(location, updateLocation, update, runId).GetAwaiter().GetResult();
+                operations.BeginRerunAsync(resourceGroup, updateLocation, update, runId).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -197,8 +197,8 @@ namespace Microsoft.AzureStack.Management.Update.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='location'>
-            /// Location of the AzureStack instance.
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
             /// </param>
             /// <param name='updateLocation'>
             /// The name of the update location.
@@ -212,9 +212,9 @@ namespace Microsoft.AzureStack.Management.Update.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginRerunAsync(this IUpdateRunsOperations operations, string location, string updateLocation, string update, string runId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginRerunAsync(this IUpdateRunsOperations operations, string resourceGroup, string updateLocation, string update, string runId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginRerunWithHttpMessagesAsync(location, updateLocation, update, runId, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginRerunWithHttpMessagesAsync(resourceGroup, updateLocation, update, runId, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>

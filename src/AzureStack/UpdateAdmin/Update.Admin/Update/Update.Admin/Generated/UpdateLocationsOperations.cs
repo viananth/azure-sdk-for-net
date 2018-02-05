@@ -53,8 +53,8 @@ namespace Microsoft.AzureStack.Management.Update.Admin
         /// <summary>
         /// Get the list of update locations.
         /// </summary>
-        /// <param name='location'>
-        /// Location of the AzureStack instance.
+        /// <param name='resourceGroup'>
+        /// The resource group the resource is located under.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -77,15 +77,15 @@ namespace Microsoft.AzureStack.Management.Update.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IEnumerable<UpdateLocation>>> ListWithHttpMessagesAsync(string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IEnumerable<UpdateLocation>>> ListWithHttpMessagesAsync(string resourceGroup, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            if (location == null)
+            if (resourceGroup == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "location");
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroup");
             }
             if (Client.ApiVersion == null)
             {
@@ -98,15 +98,15 @@ namespace Microsoft.AzureStack.Management.Update.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("location", location);
+                tracingParameters.Add("resourceGroup", resourceGroup);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourcegroups/System.{location}/providers/Microsoft.Update.Admin/updateLocations/").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.Update.Admin/updateLocations/").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
+            _url = _url.Replace("{resourceGroup}", System.Uri.EscapeDataString(resourceGroup));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -240,8 +240,8 @@ namespace Microsoft.AzureStack.Management.Update.Admin
         /// <summary>
         /// Get an update location based on name.
         /// </summary>
-        /// <param name='location'>
-        /// Location of the AzureStack instance.
+        /// <param name='resourceGroup'>
+        /// The resource group the resource is located under.
         /// </param>
         /// <param name='updateLocation'>
         /// The name of the update location.
@@ -267,15 +267,15 @@ namespace Microsoft.AzureStack.Management.Update.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<UpdateLocation>> GetWithHttpMessagesAsync(string location, string updateLocation, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<UpdateLocation>> GetWithHttpMessagesAsync(string resourceGroup, string updateLocation, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            if (location == null)
+            if (resourceGroup == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "location");
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroup");
             }
             if (updateLocation == null)
             {
@@ -292,16 +292,16 @@ namespace Microsoft.AzureStack.Management.Update.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("location", location);
+                tracingParameters.Add("resourceGroup", resourceGroup);
                 tracingParameters.Add("updateLocation", updateLocation);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourcegroups/System.{location}/providers/Microsoft.Update.Admin/updateLocations/{updateLocation}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.Update.Admin/updateLocations/{updateLocation}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
+            _url = _url.Replace("{resourceGroup}", System.Uri.EscapeDataString(resourceGroup));
             _url = _url.Replace("{updateLocation}", System.Uri.EscapeDataString(updateLocation));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
