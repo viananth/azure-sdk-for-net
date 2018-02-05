@@ -45,7 +45,7 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin.Models
         /// SolutionTemplate.</param>
         /// <param name="productProperties">the product properties. At the
         /// moment only VirtualMachineProductProperties is allowed.</param>
-        public ProductBase(string displayName = default(string), string description = default(string), string publisherDisplayName = default(string), string publisherIdentifier = default(string), string offer = default(string), string offerVersion = default(string), string sku = default(string), string billingPartNumber = default(string), string galleryItemIdentity = default(string), GalleryIcons iconUris = default(GalleryIcons), long? payloadLength = default(long?), string productKind = default(string), string productProperties = default(string))
+        public ProductBase(string displayName = default(string), string description = default(string), string publisherDisplayName = default(string), string publisherIdentifier = default(string), string offer = default(string), string offerVersion = default(string), string sku = default(string), string billingPartNumber = default(string), string galleryItemIdentity = default(string), GalleryIcons iconUris = default(GalleryIcons), long? payloadLength = default(long?), string productKind = default(string), ProductProperties productProperties = default(ProductProperties))
         {
             DisplayName = displayName;
             Description = description;
@@ -147,7 +147,7 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin.Models
         /// VirtualMachineProductProperties is allowed.
         /// </summary>
         [JsonProperty(PropertyName = "productProperties")]
-        public string ProductProperties { get; set; }
+        public ProductProperties ProductProperties { get; set; }
 
     }
 }

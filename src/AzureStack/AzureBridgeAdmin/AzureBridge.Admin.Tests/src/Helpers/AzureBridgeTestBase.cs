@@ -22,7 +22,9 @@ namespace AzureBridge.Tests
             Assert.NotNull(client);
 
             // validate objects
+            Assert.NotNull(client.Products);
             Assert.NotNull(client.DownloadedProducts);
+            Assert.NotNull(client.Activations);
             Assert.NotNull(client.SubscriptionId);
         }
     }

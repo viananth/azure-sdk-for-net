@@ -59,7 +59,7 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin.Models
         /// <param name="links">Gallery item identity.</param>
         /// <param name="legalTerms">Legal terms for the product.</param>
         /// <param name="privacyPolicy">Privacy policy of the product.</param>
-        public DownloadedProductResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string displayName = default(string), string description = default(string), string publisherDisplayName = default(string), string publisherIdentifier = default(string), string offer = default(string), string offerVersion = default(string), string sku = default(string), string billingPartNumber = default(string), string galleryItemIdentity = default(string), GalleryIcons iconUris = default(GalleryIcons), long? payloadLength = default(long?), string productKind = default(string), string productProperties = default(string), string vmExtensionType = default(string), IList<ProductLink> links = default(IList<ProductLink>), string legalTerms = default(string), string privacyPolicy = default(string))
+        public DownloadedProductResource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string displayName = default(string), string description = default(string), string publisherDisplayName = default(string), string publisherIdentifier = default(string), string offer = default(string), string offerVersion = default(string), string sku = default(string), string billingPartNumber = default(string), string galleryItemIdentity = default(string), GalleryIcons iconUris = default(GalleryIcons), long? payloadLength = default(long?), string productKind = default(string), ProductProperties productProperties = default(ProductProperties), string vmExtensionType = default(string), IList<ProductLink> links = default(IList<ProductLink>), string legalTerms = default(string), string privacyPolicy = default(string))
             : base(id, name, type, location, tags)
         {
             DisplayName = displayName;
@@ -166,7 +166,7 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin.Models
         /// VirtualMachineProductProperties is allowed.
         /// </summary>
         [JsonProperty(PropertyName = "properties.productProperties")]
-        public string ProductProperties { get; set; }
+        public ProductProperties ProductProperties { get; set; }
 
         /// <summary>
         /// Gets or sets extension type of the VM.
