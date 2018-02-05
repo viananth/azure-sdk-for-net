@@ -1,0 +1,66 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/b7a57872-f429-4eb3-b26a-5108178380a5/resourcegroups/azurestack-activation/providers/Microsoft.AzureBridge.Admin/activations/default/downloadedProducts?api-version=2016-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjdhNTc4NzItZjQyOS00ZWIzLWIyNmEtNTEwODE3ODM4MGE1L3Jlc291cmNlZ3JvdXBzL2F6dXJlc3RhY2stYWN0aXZhdGlvbi9wcm92aWRlcnMvTWljcm9zb2Z0LkF6dXJlQnJpZGdlLkFkbWluL2FjdGl2YXRpb25zL2RlZmF1bHQvZG93bmxvYWRlZFByb2R1Y3RzP2FwaS12ZXJzaW9uPTIwMTYtMDEtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "bb41e991-4f9d-4718-98b1-943bfdc67ad3"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26011.01",
+          "Microsoft.AzureStack.Management.AzureBridge.Admin.AzureBridgeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/b7a57872-f429-4eb3-b26a-5108178380a5/resourceGroups/azurestack-activation/providers/Microsoft.AzureBridge.Admin/activations/default/downloadedProducts/Canonical.UbuntuServer1604LTS-ARM_201711072\",\r\n      \"name\": \"default/Canonical.UbuntuServer1604LTS-ARM_201711072\",\r\n      \"type\": \"Microsoft.AzureBridge.Admin/activations/downloadedProducts\",\r\n      \"etag\": \"W/\\\"datetime'2018-02-02T21%3A06%3A23.2890549Z'\\\"\",\r\n      \"properties\": {\r\n        \"displayName\": \"Ubuntu Server 16.04 LTS\",\r\n        \"description\": \"Ubuntu Server 16.04 LTS amd64 20171011 Public Azure, 20171011 Azure China, 20171011 Azure Germany, 20170619.1 Azure Gov. Ubuntu Server is the world's most popular Linux for cloud environments. Updates and patches for Ubuntu 16.04 will be available until April 2021.  Ubuntu Server is the perfect virtual machine (VM) platform for all workloads from web applications to NoSQL databases and Hadoop. For more information see <a href='http://partners.ubuntu.com/microsoft' target='_blank'>Ubuntu on Azure</a> and <a href='http://juju.ubuntu.com' target='_blank'>using Juju to deploy your workloads</a>.<p><h3 class='msportalfx-text-header'>Legal Terms</h3></p><p>By clicking the Create button, I acknowledge that I am getting this software from Canonical and that the <a href='http://www.ubuntu.com/project/about-ubuntu/licensing' target='_blank'>legal terms</a> of Canonical apply to it. Microsoft does not provide rights for third-party software. Also see the <a href='http://www.ubuntu.com/aboutus/privacypolicy' target='_blank'>privacy statement</a> from Canonical.</p>\",\r\n        \"publisherDisplayName\": \"Canonical\",\r\n        \"publisherIdentifier\": \"Canonical\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"offer\": \"UbuntuServer\",\r\n        \"offerVersion\": \"1.0.33\",\r\n        \"sku\": \"16.04-LTS\",\r\n        \"billingPartNumber\": \"\",\r\n        \"galleryItemIdentity\": \"Canonical.UbuntuServer1604LTS-ARM.1.0.33\",\r\n        \"iconUris\": {\r\n          \"large\": \"https://azstmktprod001.azureedge.net/Canonical.UbuntuServer1604LTS-ARM_201711072/icons/Large.png\",\r\n          \"wide\": \"https://azstmktprod001.azureedge.net/Canonical.UbuntuServer1604LTS-ARM_201711072/icons/Wide.png\",\r\n          \"medium\": \"https://azstmktprod001.azureedge.net/Canonical.UbuntuServer1604LTS-ARM_201711072/icons/Medium.png\",\r\n          \"small\": \"https://azstmktprod001.azureedge.net/Canonical.UbuntuServer1604LTS-ARM_201711072/icons/Small.png\"\r\n        },\r\n        \"links\": [\r\n          {\r\n            \"displayName\": \"Linux VM Documentation\",\r\n            \"uri\": \"https://docs.microsoft.com/azure/virtual-machines/linux/\"\r\n          },\r\n          {\r\n            \"displayName\": \"Ubuntu Documentation\",\r\n            \"uri\": \"https://help.ubuntu.com/16.04/index.html\"\r\n          },\r\n          {\r\n            \"displayName\": \"FAQ\",\r\n            \"uri\": \"https://help.ubuntu.com/community/ServerFaq\"\r\n          },\r\n          {\r\n            \"displayName\": \"Pricing details\",\r\n            \"uri\": \"http://azure.microsoft.com/en-us/pricing/details/virtual-machines/#linux\"\r\n          }\r\n        ],\r\n        \"legalTerms\": \"http://www.ubuntu.com/project/about-ubuntu/licensing\",\r\n        \"privacyPolicy\": \"http://www.ubuntu.com/aboutus/privacypolicy\",\r\n        \"payloadLength\": 32212288270,\r\n        \"productKind\": \"VirtualMachine\",\r\n        \"productProperties\": {\r\n          \"version\": \"16.04.201711072\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2885"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Mon, 05 Feb 2018 19:59:31 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "16de3455-4f03-4465-9c55-e2b7353f7d47"
+        ],
+        "x-ms-correlation-request-id": [
+          "4375d8cc-77d8-4380-867e-fa857303e09f"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14141"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20180205T195931Z:4375d8cc-77d8-4380-867e-fa857303e09f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "b7a57872-f429-4eb3-b26a-5108178380a5"
+  }
+}
