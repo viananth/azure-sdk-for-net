@@ -13,6 +13,9 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
     using Newtonsoft.Json;
     using System.Linq;
 
+    /// <summary>
+    /// Represents gallery item artifacts.
+    /// </summary>
     public partial class Artifact
     {
         /// <summary>
@@ -26,8 +29,10 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
         /// <summary>
         /// Initializes a new instance of the Artifact class.
         /// </summary>
-        /// <param name="type">Possible values include: 'template', 'fragment',
-        /// 'custom', 'metadata'</param>
+        /// <param name="name">Name of the artifact.</param>
+        /// <param name="uri">URI to the artifact.</param>
+        /// <param name="type">Artifact type. Possible values include:
+        /// 'template', 'fragment', 'custom', 'metadata'</param>
         public Artifact(string name = default(string), string uri = default(string), string type = default(string))
         {
             Name = name;
@@ -42,18 +47,20 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets name of the artifact.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
+        /// Gets or sets URI to the artifact.
         /// </summary>
         [JsonProperty(PropertyName = "uri")]
         public string Uri { get; set; }
 
         /// <summary>
-        /// Gets or sets possible values include: 'template', 'fragment',
-        /// 'custom', 'metadata'
+        /// Gets or sets artifact type. Possible values include: 'template',
+        /// 'fragment', 'custom', 'metadata'
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }

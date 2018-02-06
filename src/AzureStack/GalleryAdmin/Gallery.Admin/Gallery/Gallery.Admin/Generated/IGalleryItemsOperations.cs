@@ -19,12 +19,12 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin
     using System.Threading.Tasks;
 
     /// <summary>
-    /// RegistrationsOperations operations.
+    /// GalleryItemsOperations operations.
     /// </summary>
-    public partial interface IRegistrationsOperations
+    public partial interface IGalleryItemsOperations
     {
         /// <summary>
-        /// Lists gallery registrations
+        /// Lists gallery items.
         /// </summary>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -43,10 +43,10 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin
         /// </exception>
         Task<AzureOperationResponse<IEnumerable<GalleryItem>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Uploads a provider gallery item to the storage
+        /// Uploads a provider gallery item to the storage.
         /// </summary>
         /// <param name='galleryItemUri'>
-        /// Gets or sets the gallery item URI.
+        /// URI for your gallery package that has already been uploaded online.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -65,10 +65,10 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin
         /// </exception>
         Task<AzureOperationResponse<GalleryItem>> CreateWithHttpMessagesAsync(string galleryItemUri = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Gets a specific gallery registration
+        /// Get a specific gallery item.
         /// </summary>
         /// <param name='galleryItemName'>
-        /// Identity of the gallery item. Includes publisher name, item name
+        /// Identity of the gallery item. Includes publisher name, item name,
         /// and may include version separated by period character.
         /// </param>
         /// <param name='customHeaders'>
@@ -88,10 +88,10 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin
         /// </exception>
         Task<AzureOperationResponse<GalleryItem>> GetWithHttpMessagesAsync(string galleryItemName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Deletes a specific gallery registration
+        /// Delete a specific gallery item.
         /// </summary>
         /// <param name='galleryItemName'>
-        /// Identity of the gallery item. Includes publisher name, item name
+        /// Identity of the gallery item. Includes publisher name, item name,
         /// and may include version separated by period character.
         /// </param>
         /// <param name='customHeaders'>

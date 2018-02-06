@@ -15,6 +15,9 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// Represents a offer details item read from the gallery item package.
+    /// </summary>
     public partial class OfferDetails
     {
         /// <summary>
@@ -28,6 +31,9 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
         /// <summary>
         /// Initializes a new instance of the OfferDetails class.
         /// </summary>
+        /// <param name="publisherId">Publisher identifier.</param>
+        /// <param name="offerId">Offer identifier.</param>
+        /// <param name="plans">List of plans available for the offer.</param>
         public OfferDetails(string publisherId = default(string), string offerId = default(string), IList<Plan> plans = default(IList<Plan>))
         {
             PublisherId = publisherId;
@@ -42,16 +48,19 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets publisher identifier.
         /// </summary>
         [JsonProperty(PropertyName = "publisherId")]
         public string PublisherId { get; set; }
 
         /// <summary>
+        /// Gets or sets offer identifier.
         /// </summary>
         [JsonProperty(PropertyName = "offerId")]
         public string OfferId { get; set; }
 
         /// <summary>
+        /// Gets list of plans available for the offer.
         /// </summary>
         [JsonProperty(PropertyName = "plans")]
         public IList<Plan> Plans { get; private set; }

@@ -16,11 +16,19 @@ namespace Gallery.Tests
         
 
         [Fact]
-        public void TestGetOperations() {
+        public void TestListGalleryItems() {
             RunTest((client) => {
-                var operations = client.Operations();
-                Assert.NotNull(operations);
-                Assert.Equal<int>(4,operations.Count());
+                var galleryItems = client.GalleryItems.List();
+                Assert.NotNull(galleryItems);
+            });
+        }
+
+        [Fact]
+        public void TestGetGalleryItem()
+        {
+            RunTest((client) => {
+                var galleryItem = client.GalleryItems.Get("Microsoft.KeyVault.1.0.14");
+                Assert.NotNull(galleryItem);
             });
         }
     }

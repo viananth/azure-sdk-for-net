@@ -13,6 +13,9 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
     using Newtonsoft.Json;
     using System.Linq;
 
+    /// <summary>
+    /// Represents a product item read from the gallery item package.
+    /// </summary>
     public partial class Product
     {
         /// <summary>
@@ -26,6 +29,18 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
         /// <summary>
         /// Initializes a new instance of the Product class.
         /// </summary>
+        /// <param name="displayName">Display name of the product.</param>
+        /// <param name="publisherDisplayName">Publisher display name of the
+        /// product.</param>
+        /// <param name="pricingDetailsUri">URI to the pricing details of the
+        /// product.</param>
+        /// <param name="offerDetails">Offer details of the product.</param>
+        /// <param name="legalTerms">Legal terms of the product.</param>
+        /// <param name="privacyPolicy">Privacy policy of the product.</param>
+        /// <param name="legalTermsUri">URI to the legal terms of the
+        /// product.</param>
+        /// <param name="privacyPolicyUri">URI to the privacy policy of the
+        /// product.</param>
         public Product(string displayName = default(string), string publisherDisplayName = default(string), string pricingDetailsUri = default(string), OfferDetails offerDetails = default(OfferDetails), string legalTerms = default(string), string privacyPolicy = default(string), string legalTermsUri = default(string), string privacyPolicyUri = default(string))
         {
             DisplayName = displayName;
@@ -45,41 +60,49 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets display name of the product.
         /// </summary>
         [JsonProperty(PropertyName = "displayName")]
         public string DisplayName { get; set; }
 
         /// <summary>
+        /// Gets or sets publisher display name of the product.
         /// </summary>
         [JsonProperty(PropertyName = "publisherDisplayName")]
         public string PublisherDisplayName { get; set; }
 
         /// <summary>
+        /// Gets or sets URI to the pricing details of the product.
         /// </summary>
         [JsonProperty(PropertyName = "pricingDetailsUri")]
         public string PricingDetailsUri { get; set; }
 
         /// <summary>
+        /// Gets or sets offer details of the product.
         /// </summary>
         [JsonProperty(PropertyName = "offerDetails")]
         public OfferDetails OfferDetails { get; set; }
 
         /// <summary>
+        /// Gets or sets legal terms of the product.
         /// </summary>
         [JsonProperty(PropertyName = "legalTerms")]
         public string LegalTerms { get; set; }
 
         /// <summary>
+        /// Gets or sets privacy policy of the product.
         /// </summary>
         [JsonProperty(PropertyName = "privacyPolicy")]
         public string PrivacyPolicy { get; set; }
 
         /// <summary>
+        /// Gets or sets URI to the legal terms of the product.
         /// </summary>
         [JsonProperty(PropertyName = "legalTermsUri")]
         public string LegalTermsUri { get; set; }
 
         /// <summary>
+        /// Gets or sets URI to the privacy policy of the product.
         /// </summary>
         [JsonProperty(PropertyName = "privacyPolicyUri")]
         public string PrivacyPolicyUri { get; set; }
