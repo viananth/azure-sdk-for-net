@@ -24,18 +24,18 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin
     public static partial class GalleryAdminClientExtensions
     {
             /// <summary>
-            /// Gets the available operations.
+            /// Gets the available gallery admin operations.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static IEnumerable<Operation> Operations(this IGalleryAdminClient operations)
+            public static IEnumerable<Operation> ListOperations(this IGalleryAdminClient operations)
             {
-                return operations.OperationsAsync().GetAwaiter().GetResult();
+                return operations.ListOperationsAsync().GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets the available operations.
+            /// Gets the available gallery admin operations.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -43,9 +43,9 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IEnumerable<Operation>> OperationsAsync(this IGalleryAdminClient operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IEnumerable<Operation>> ListOperationsAsync(this IGalleryAdminClient operations, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.OperationsWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListOperationsWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

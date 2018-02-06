@@ -19,23 +19,23 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for RegistrationsOperations.
+    /// Extension methods for GalleryItemsOperations.
     /// </summary>
-    public static partial class RegistrationsOperationsExtensions
+    public static partial class GalleryItemsOperationsExtensions
     {
             /// <summary>
-            /// Lists gallery registrations
+            /// Lists gallery items.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static IEnumerable<GalleryItem> List(this IRegistrationsOperations operations)
+            public static IEnumerable<GalleryItem> List(this IGalleryItemsOperations operations)
             {
                 return operations.ListAsync().GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Lists gallery registrations
+            /// Lists gallery items.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -43,7 +43,7 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IEnumerable<GalleryItem>> ListAsync(this IRegistrationsOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IEnumerable<GalleryItem>> ListAsync(this IGalleryItemsOperations operations, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
                 {
@@ -52,32 +52,32 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin
             }
 
             /// <summary>
-            /// Uploads a provider gallery item to the storage
+            /// Uploads a provider gallery item to the storage.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='galleryItemUri'>
-            /// Gets or sets the gallery item URI.
+            /// URI for your gallery package that has already been uploaded online.
             /// </param>
-            public static GalleryItem Create(this IRegistrationsOperations operations, string galleryItemUri = default(string))
+            public static GalleryItem Create(this IGalleryItemsOperations operations, string galleryItemUri = default(string))
             {
                 return operations.CreateAsync(galleryItemUri).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Uploads a provider gallery item to the storage
+            /// Uploads a provider gallery item to the storage.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='galleryItemUri'>
-            /// Gets or sets the gallery item URI.
+            /// URI for your gallery package that has already been uploaded online.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<GalleryItem> CreateAsync(this IRegistrationsOperations operations, string galleryItemUri = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<GalleryItem> CreateAsync(this IGalleryItemsOperations operations, string galleryItemUri = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateWithHttpMessagesAsync(galleryItemUri, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -86,34 +86,34 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin
             }
 
             /// <summary>
-            /// Gets a specific gallery registration
+            /// Get a specific gallery item.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='galleryItemName'>
-            /// Identity of the gallery item. Includes publisher name, item name and may
+            /// Identity of the gallery item. Includes publisher name, item name, and may
             /// include version separated by period character.
             /// </param>
-            public static GalleryItem Get(this IRegistrationsOperations operations, string galleryItemName)
+            public static GalleryItem Get(this IGalleryItemsOperations operations, string galleryItemName)
             {
                 return operations.GetAsync(galleryItemName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets a specific gallery registration
+            /// Get a specific gallery item.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='galleryItemName'>
-            /// Identity of the gallery item. Includes publisher name, item name and may
+            /// Identity of the gallery item. Includes publisher name, item name, and may
             /// include version separated by period character.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<GalleryItem> GetAsync(this IRegistrationsOperations operations, string galleryItemName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<GalleryItem> GetAsync(this IGalleryItemsOperations operations, string galleryItemName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetWithHttpMessagesAsync(galleryItemName, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -122,34 +122,34 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin
             }
 
             /// <summary>
-            /// Deletes a specific gallery registration
+            /// Delete a specific gallery item.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='galleryItemName'>
-            /// Identity of the gallery item. Includes publisher name, item name and may
+            /// Identity of the gallery item. Includes publisher name, item name, and may
             /// include version separated by period character.
             /// </param>
-            public static void Delete(this IRegistrationsOperations operations, string galleryItemName)
+            public static void Delete(this IGalleryItemsOperations operations, string galleryItemName)
             {
                 operations.DeleteAsync(galleryItemName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Deletes a specific gallery registration
+            /// Delete a specific gallery item.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
             /// <param name='galleryItemName'>
-            /// Identity of the gallery item. Includes publisher name, item name and may
+            /// Identity of the gallery item. Includes publisher name, item name, and may
             /// include version separated by period character.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this IRegistrationsOperations operations, string galleryItemName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this IGalleryItemsOperations operations, string galleryItemName, CancellationToken cancellationToken = default(CancellationToken))
             {
                 (await operations.DeleteWithHttpMessagesAsync(galleryItemName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }

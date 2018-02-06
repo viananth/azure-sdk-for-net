@@ -28,7 +28,7 @@ namespace Gallery.Tests
             Assert.NotNull(client);
 
             // validate objects
-            Assert.NotNull(client.Registrations);
+            Assert.NotNull(client.GalleryItems);
         }
     }
 }

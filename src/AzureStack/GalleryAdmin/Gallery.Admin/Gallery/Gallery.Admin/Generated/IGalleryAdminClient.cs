@@ -45,14 +45,14 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin
         ServiceClientCredentials Credentials { get; }
 
         /// <summary>
-        /// Subscription credentials which uniquely identify Microsoft Azure
-        /// subscription.The subscription ID forms part of the URI for every
+        /// Subscription credentials that uniquely identify Microsoft Azure
+        /// subscription. The subscription ID forms part of the URI for every
         /// service call.
         /// </summary>
         string SubscriptionId { get; set; }
 
         /// <summary>
-        /// Client Api Version.
+        /// Client API Version.
         /// </summary>
         string ApiVersion { get; }
 
@@ -75,12 +75,12 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin
 
 
         /// <summary>
-        /// Gets the IRegistrationsOperations.
+        /// Gets the IGalleryItemsOperations.
         /// </summary>
-        IRegistrationsOperations Registrations { get; }
+        IGalleryItemsOperations GalleryItems { get; }
 
         /// <summary>
-        /// Gets the available operations.
+        /// Gets the available gallery admin operations.
         /// </summary>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -88,7 +88,7 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<AzureOperationResponse<IEnumerable<Operation>>> OperationsWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IEnumerable<Operation>>> ListOperationsWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
     }
 }

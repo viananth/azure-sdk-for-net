@@ -13,6 +13,9 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
     using Newtonsoft.Json;
     using System.Linq;
 
+    /// <summary>
+    /// Represents a link item read from the gallery item package.
+    /// </summary>
     public partial class LinkProperties
     {
         /// <summary>
@@ -26,6 +29,9 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
         /// <summary>
         /// Initializes a new instance of the LinkProperties class.
         /// </summary>
+        /// <param name="id">ID of the link.</param>
+        /// <param name="displayName">Display name of the link.</param>
+        /// <param name="uri">URI of the link.</param>
         public LinkProperties(string id = default(string), string displayName = default(string), string uri = default(string))
         {
             Id = id;
@@ -40,16 +46,19 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets ID of the link.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
 
         /// <summary>
+        /// Gets or sets display name of the link.
         /// </summary>
         [JsonProperty(PropertyName = "displayName")]
         public string DisplayName { get; set; }
 
         /// <summary>
+        /// Gets or sets URI of the link.
         /// </summary>
         [JsonProperty(PropertyName = "uri")]
         public string Uri { get; set; }

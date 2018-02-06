@@ -13,6 +13,9 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
     using Newtonsoft.Json;
     using System.Linq;
 
+    /// <summary>
+    /// URIs to icon files.
+    /// </summary>
     public partial class GalleryItemPropertiesIconFileUris
     {
         /// <summary>
@@ -28,6 +31,11 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
         /// Initializes a new instance of the GalleryItemPropertiesIconFileUris
         /// class.
         /// </summary>
+        /// <param name="small">URI to the small icon.</param>
+        /// <param name="medium">URI to the medium icon.</param>
+        /// <param name="large">URI to the large icon.</param>
+        /// <param name="wide">URI to the wide icon.</param>
+        /// <param name="hero">URI to the hero icon.</param>
         public GalleryItemPropertiesIconFileUris(string small = default(string), string medium = default(string), string large = default(string), string wide = default(string), string hero = default(string))
         {
             Small = small;
@@ -44,26 +52,31 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets URI to the small icon.
         /// </summary>
         [JsonProperty(PropertyName = "small")]
         public string Small { get; set; }
 
         /// <summary>
+        /// Gets or sets URI to the medium icon.
         /// </summary>
         [JsonProperty(PropertyName = "medium")]
         public string Medium { get; set; }
 
         /// <summary>
+        /// Gets or sets URI to the large icon.
         /// </summary>
         [JsonProperty(PropertyName = "large")]
         public string Large { get; set; }
 
         /// <summary>
+        /// Gets or sets URI to the wide icon.
         /// </summary>
         [JsonProperty(PropertyName = "wide")]
         public string Wide { get; set; }
 
         /// <summary>
+        /// Gets or sets URI to the hero icon.
         /// </summary>
         [JsonProperty(PropertyName = "hero")]
         public string Hero { get; set; }

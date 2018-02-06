@@ -13,6 +13,9 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
     using Newtonsoft.Json;
     using System.Linq;
 
+    /// <summary>
+    /// Marketing material for a gallery item.
+    /// </summary>
     public partial class MarketingMaterial
     {
         /// <summary>
@@ -26,6 +29,8 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
         /// <summary>
         /// Initializes a new instance of the MarketingMaterial class.
         /// </summary>
+        /// <param name="path">Path to the marketing site.</param>
+        /// <param name="learnUri">URI to educational material.</param>
         public MarketingMaterial(string path = default(string), string learnUri = default(string))
         {
             Path = path;
@@ -39,11 +44,13 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets path to the marketing site.
         /// </summary>
         [JsonProperty(PropertyName = "path")]
         public string Path { get; set; }
 
         /// <summary>
+        /// Gets or sets URI to educational material.
         /// </summary>
         [JsonProperty(PropertyName = "learnUri")]
         public string LearnUri { get; set; }

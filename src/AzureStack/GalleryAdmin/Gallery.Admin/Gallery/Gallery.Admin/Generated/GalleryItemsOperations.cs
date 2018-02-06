@@ -23,12 +23,12 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin
     using System.Threading.Tasks;
 
     /// <summary>
-    /// RegistrationsOperations operations.
+    /// GalleryItemsOperations operations.
     /// </summary>
-    internal partial class RegistrationsOperations : IServiceOperations<GalleryAdminClient>, IRegistrationsOperations
+    internal partial class GalleryItemsOperations : IServiceOperations<GalleryAdminClient>, IGalleryItemsOperations
     {
         /// <summary>
-        /// Initializes a new instance of the RegistrationsOperations class.
+        /// Initializes a new instance of the GalleryItemsOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -36,7 +36,7 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal RegistrationsOperations(GalleryAdminClient client)
+        internal GalleryItemsOperations(GalleryAdminClient client)
         {
             if (client == null)
             {
@@ -51,7 +51,7 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin
         public GalleryAdminClient Client { get; private set; }
 
         /// <summary>
-        /// Lists gallery registrations
+        /// Lists gallery items.
         /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -229,10 +229,10 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin
         }
 
         /// <summary>
-        /// Uploads a provider gallery item to the storage
+        /// Uploads a provider gallery item to the storage.
         /// </summary>
         /// <param name='galleryItemUri'>
-        /// Gets or sets the gallery item URI.
+        /// URI for your gallery package that has already been uploaded online.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -354,7 +354,7 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 201)
+            if ((int)_statusCode != 200 && (int)_statusCode != 201)
             {
                 var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
@@ -397,6 +397,24 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
             }
             // Deserialize Response
+            if ((int)_statusCode == 200)
+            {
+                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                try
+                {
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<GalleryItem>(_responseContent, Client.DeserializationSettings);
+                }
+                catch (JsonException ex)
+                {
+                    _httpRequest.Dispose();
+                    if (_httpResponse != null)
+                    {
+                        _httpResponse.Dispose();
+                    }
+                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
+                }
+            }
+            // Deserialize Response
             if ((int)_statusCode == 201)
             {
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -422,10 +440,10 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin
         }
 
         /// <summary>
-        /// Gets a specific gallery registration
+        /// Get a specific gallery item.
         /// </summary>
         /// <param name='galleryItemName'>
-        /// Identity of the gallery item. Includes publisher name, item name and may
+        /// Identity of the gallery item. Includes publisher name, item name, and may
         /// include version separated by period character.
         /// </param>
         /// <param name='customHeaders'>
@@ -542,7 +560,7 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200)
+            if ((int)_statusCode != 200 && (int)_statusCode != 404)
             {
                 var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
@@ -610,10 +628,10 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin
         }
 
         /// <summary>
-        /// Deletes a specific gallery registration
+        /// Delete a specific gallery item.
         /// </summary>
         /// <param name='galleryItemName'>
-        /// Identity of the gallery item. Includes publisher name, item name and may
+        /// Identity of the gallery item. Includes publisher name, item name, and may
         /// include version separated by period character.
         /// </param>
         /// <param name='customHeaders'>
@@ -727,7 +745,7 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 204 && (int)_statusCode != 200)
+            if ((int)_statusCode != 200 && (int)_statusCode != 204)
             {
                 var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
