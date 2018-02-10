@@ -22,35 +22,41 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
     public static partial class ActivationsOperationsExtensions
     {
             /// <summary>
-            /// Return product name.
+            /// Returns the list of activations.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static IPage<ActivationResource> List(this IActivationsOperations operations)
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
+            /// </param>
+            public static IPage<ActivationResource> List(this IActivationsOperations operations, string resourceGroup)
             {
-                return operations.ListAsync().GetAwaiter().GetResult();
+                return operations.ListAsync(resourceGroup).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Return product name.
+            /// Returns the list of activations.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<ActivationResource>> ListAsync(this IActivationsOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<ActivationResource>> ListAsync(this IActivationsOperations operations, string resourceGroup, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroup, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Return product name.
+            /// Returns activation name.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -67,7 +73,7 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
             }
 
             /// <summary>
-            /// Return product name.
+            /// Returns activation name.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -95,15 +101,18 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
+            /// </param>
             /// <param name='activationName'>
             /// Name of the activation.
             /// </param>
             /// <param name='activation'>
             /// new activation.
             /// </param>
-            public static ActivationResource CreateOrUpdate(this IActivationsOperations operations, string activationName, Activation activation)
+            public static ActivationResource CreateOrUpdate(this IActivationsOperations operations, string resourceGroup, string activationName, Activation activation)
             {
-                return operations.CreateOrUpdateAsync(activationName, activation).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(resourceGroup, activationName, activation).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -112,6 +121,9 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
+            /// </param>
             /// <param name='activationName'>
             /// Name of the activation.
             /// </param>
@@ -121,9 +133,9 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ActivationResource> CreateOrUpdateAsync(this IActivationsOperations operations, string activationName, Activation activation, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ActivationResource> CreateOrUpdateAsync(this IActivationsOperations operations, string resourceGroup, string activationName, Activation activation, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(activationName, activation, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroup, activationName, activation, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -135,12 +147,15 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
+            /// </param>
             /// <param name='activationName'>
             /// Name of the activation.
             /// </param>
-            public static ActivationResource Delete(this IActivationsOperations operations, string activationName)
+            public static ActivationResource Delete(this IActivationsOperations operations, string resourceGroup, string activationName)
             {
-                return operations.DeleteAsync(activationName).GetAwaiter().GetResult();
+                return operations.DeleteAsync(resourceGroup, activationName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -148,6 +163,9 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
             /// </param>
             /// <param name='activationName'>
             /// Name of the activation.
@@ -155,16 +173,16 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ActivationResource> DeleteAsync(this IActivationsOperations operations, string activationName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ActivationResource> DeleteAsync(this IActivationsOperations operations, string resourceGroup, string activationName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.DeleteWithHttpMessagesAsync(activationName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroup, activationName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
             }
 
             /// <summary>
-            /// Return product name.
+            /// Returns the list of activations.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -178,7 +196,7 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
             }
 
             /// <summary>
-            /// Return product name.
+            /// Returns the list of activations.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
