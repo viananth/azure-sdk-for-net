@@ -10,7 +10,7 @@ using Xunit;
 
 namespace Subscriptions.Tests
 {
-    public class ResellerOfferTests : SubscriptionsTestBase
+    public class DelegatedProviderOfferTests : SubscriptionsTestBase
     {
 
         private void ValidateUsageAggregate(DelegatedProviderOffer ua) {
@@ -21,7 +21,7 @@ namespace Subscriptions.Tests
             Assert.NotNull(ua.Name);
             Assert.NotNull(ua.Type);
 
-            // ResellerOffer
+            // DelegatedProviderOffer
         }
 
         private void AssertSame(DelegatedProviderOffer expected, DelegatedProviderOffer given) {
@@ -31,16 +31,16 @@ namespace Subscriptions.Tests
             Assert.Equal(expected.Name, given.Name);
             Assert.Equal(expected.Type, given.Type);
 
-            // ResellerOffer
+            // DelegatedProviderOffer
 
         }
         [Fact]
-        public void TestListResellerOffers() {
+        public void TestListDelegatedProviderOffers() {
             RunTest((client) => {
                 var providers = client.DelegatedProviders.List();
                 providers.ForEach((provider) => {
                     var resourceGroup = Common.GetResourceGroupFromId(provider.Id);
-                    client.ResellerOffers.List(provider.DelegatedProviderSubscriptionId);
+                    client.DelegatedProviderOffers.List(provider.DelegatedProviderSubscriptionId);
                 });
             });
         }

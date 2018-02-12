@@ -30,7 +30,7 @@ namespace Subscriptions.Tests
             Assert.NotNull(client.Offers);
             Assert.NotNull(client.Plans);
             Assert.NotNull(client.Quotas);
-            Assert.NotNull(client.ResellerOffers);
+            Assert.NotNull(client.DelegatedProviderOffers);
             Assert.NotNull(client.Subscriptions);
         }
     }
