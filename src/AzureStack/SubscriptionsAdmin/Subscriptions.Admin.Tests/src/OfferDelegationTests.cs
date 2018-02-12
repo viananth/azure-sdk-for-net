@@ -26,11 +26,11 @@ namespace Subscriptions.Tests
             Assert.NotNull(item.OfferDisplayName);
             Assert.NotNull(item.OfferName);
             Assert.NotNull(item.OfferResourceGroupName);
-            Assert.NotNull(item.ResellerOfferDescription);
-            Assert.NotNull(item.ResellerOfferDisplayName);
-            Assert.NotNull(item.ResellerOfferName);
-            Assert.NotNull(item.ResellerOfferResourceGroupName);
-            Assert.NotNull(item.ResellerSubscriptionId);
+            Assert.NotNull(item.DelegatedProviderOfferDescription);
+            Assert.NotNull(item.DelegatedProviderOfferDisplayName);
+            Assert.NotNull(item.DelegatedProviderOfferName);
+            Assert.NotNull(item.DelegatedProviderOfferResourceGroupName);
+            Assert.NotNull(item.DelegatedProviderSubscriptionId);
             Assert.NotNull(item.SubscriptionId);
         }
 
