@@ -80,7 +80,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<DelegatedOffer>>> ListWithHttpMessagesAsync(string resourceGroup, string offer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<OfferDelegation>>> ListWithHttpMessagesAsync(string resourceGroup, string offer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -214,7 +214,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<DelegatedOffer>>();
+            var _result = new AzureOperationResponse<IPage<OfferDelegation>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -227,7 +227,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<DelegatedOffer>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<OfferDelegation>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -255,8 +255,8 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <param name='offer'>
         /// Name of an offer.
         /// </param>
-        /// <param name='delegatedOffer'>
-        /// Name of a delgated offer.
+        /// <param name='offerDelegationName'>
+        /// Name of a offer delegation.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -279,7 +279,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<DelegatedOffer>> GetWithHttpMessagesAsync(string resourceGroup, string offer, string delegatedOffer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<OfferDelegation>> GetWithHttpMessagesAsync(string resourceGroup, string offer, string offerDelegationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -293,9 +293,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "offer");
             }
-            if (delegatedOffer == null)
+            if (offerDelegationName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "delegatedOffer");
+                throw new ValidationException(ValidationRules.CannotBeNull, "offerDelegationName");
             }
             if (Client.ApiVersion == null)
             {
@@ -310,17 +310,17 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroup", resourceGroup);
                 tracingParameters.Add("offer", offer);
-                tracingParameters.Add("delegatedOffer", delegatedOffer);
+                tracingParameters.Add("offerDelegationName", offerDelegationName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/offerDelegations/{delegatedOffer}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/offerDelegations/{offerDelegationName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{resourceGroup}", System.Uri.EscapeDataString(resourceGroup));
             _url = _url.Replace("{offer}", System.Uri.EscapeDataString(offer));
-            _url = _url.Replace("{delegatedOffer}", System.Uri.EscapeDataString(delegatedOffer));
+            _url = _url.Replace("{offerDelegationName}", System.Uri.EscapeDataString(offerDelegationName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -419,7 +419,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<DelegatedOffer>();
+            var _result = new AzureOperationResponse<OfferDelegation>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -432,7 +432,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<DelegatedOffer>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<OfferDelegation>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -460,11 +460,11 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <param name='offer'>
         /// Name of an offer.
         /// </param>
-        /// <param name='delegatedOffer'>
-        /// Name of a delgated offer.
+        /// <param name='offerDelegationName'>
+        /// Name of a offer delegation.
         /// </param>
-        /// <param name='newDelegatedOffer'>
-        /// New delegated offer.
+        /// <param name='newOfferDelegation'>
+        /// New offer delegation parameter.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -487,7 +487,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<DelegatedOffer>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroup, string offer, string delegatedOffer, DelegatedOffer newDelegatedOffer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<OfferDelegation>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroup, string offer, string offerDelegationName, OfferDelegation newOfferDelegation, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -501,17 +501,17 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "offer");
             }
-            if (delegatedOffer == null)
+            if (offerDelegationName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "delegatedOffer");
+                throw new ValidationException(ValidationRules.CannotBeNull, "offerDelegationName");
             }
             if (Client.ApiVersion == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
             }
-            if (newDelegatedOffer == null)
+            if (newOfferDelegation == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "newDelegatedOffer");
+                throw new ValidationException(ValidationRules.CannotBeNull, "newOfferDelegation");
             }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
@@ -522,18 +522,18 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroup", resourceGroup);
                 tracingParameters.Add("offer", offer);
-                tracingParameters.Add("delegatedOffer", delegatedOffer);
-                tracingParameters.Add("newDelegatedOffer", newDelegatedOffer);
+                tracingParameters.Add("offerDelegationName", offerDelegationName);
+                tracingParameters.Add("newOfferDelegation", newOfferDelegation);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "CreateOrUpdate", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/offerDelegations/{delegatedOffer}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/offerDelegations/{offerDelegationName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{resourceGroup}", System.Uri.EscapeDataString(resourceGroup));
             _url = _url.Replace("{offer}", System.Uri.EscapeDataString(offer));
-            _url = _url.Replace("{delegatedOffer}", System.Uri.EscapeDataString(delegatedOffer));
+            _url = _url.Replace("{offerDelegationName}", System.Uri.EscapeDataString(offerDelegationName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -577,9 +577,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
 
             // Serialize Request
             string _requestContent = null;
-            if(newDelegatedOffer != null)
+            if(newOfferDelegation != null)
             {
-                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(newDelegatedOffer, Client.SerializationSettings);
+                _requestContent = Rest.Serialization.SafeJsonConvert.SerializeObject(newOfferDelegation, Client.SerializationSettings);
                 _httpRequest.Content = new StringContent(_requestContent, System.Text.Encoding.UTF8);
                 _httpRequest.Content.Headers.ContentType =System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json; charset=utf-8");
             }
@@ -638,7 +638,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<DelegatedOffer>();
+            var _result = new AzureOperationResponse<OfferDelegation>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -651,7 +651,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<DelegatedOffer>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<OfferDelegation>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -669,7 +669,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<DelegatedOffer>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<OfferDelegation>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -697,8 +697,8 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <param name='offer'>
         /// Name of an offer.
         /// </param>
-        /// <param name='delegatedOffer'>
-        /// Name of a delgated offer.
+        /// <param name='offerDelegationName'>
+        /// Name of a offer delegation.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -718,7 +718,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroup, string offer, string delegatedOffer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroup, string offer, string offerDelegationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -732,9 +732,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "offer");
             }
-            if (delegatedOffer == null)
+            if (offerDelegationName == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "delegatedOffer");
+                throw new ValidationException(ValidationRules.CannotBeNull, "offerDelegationName");
             }
             if (Client.ApiVersion == null)
             {
@@ -749,17 +749,17 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroup", resourceGroup);
                 tracingParameters.Add("offer", offer);
-                tracingParameters.Add("delegatedOffer", delegatedOffer);
+                tracingParameters.Add("offerDelegationName", offerDelegationName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Delete", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/offerDelegations/{delegatedOffer}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/offerDelegations/{offerDelegationName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{resourceGroup}", System.Uri.EscapeDataString(resourceGroup));
             _url = _url.Replace("{offer}", System.Uri.EscapeDataString(offer));
-            _url = _url.Replace("{delegatedOffer}", System.Uri.EscapeDataString(delegatedOffer));
+            _url = _url.Replace("{offerDelegationName}", System.Uri.EscapeDataString(offerDelegationName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -899,7 +899,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<DelegatedOffer>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<OfferDelegation>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (nextPageLink == null)
             {
@@ -1013,7 +1013,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<DelegatedOffer>>();
+            var _result = new AzureOperationResponse<IPage<OfferDelegation>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -1026,7 +1026,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<DelegatedOffer>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<OfferDelegation>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {

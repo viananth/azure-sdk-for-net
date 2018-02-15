@@ -47,7 +47,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<DelegatedOffer>>> ListWithHttpMessagesAsync(string resourceGroup, string offer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<OfferDelegation>>> ListWithHttpMessagesAsync(string resourceGroup, string offer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get the list of offers.
         /// </summary>
@@ -57,8 +57,8 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <param name='offer'>
         /// Name of an offer.
         /// </param>
-        /// <param name='delegatedOffer'>
-        /// Name of a delgated offer.
+        /// <param name='offerDelegationName'>
+        /// Name of a offer delegation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -75,7 +75,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<DelegatedOffer>> GetWithHttpMessagesAsync(string resourceGroup, string offer, string delegatedOffer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<OfferDelegation>> GetWithHttpMessagesAsync(string resourceGroup, string offer, string offerDelegationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get the list of offers.
         /// </summary>
@@ -85,11 +85,11 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <param name='offer'>
         /// Name of an offer.
         /// </param>
-        /// <param name='delegatedOffer'>
-        /// Name of a delgated offer.
+        /// <param name='offerDelegationName'>
+        /// Name of a offer delegation.
         /// </param>
-        /// <param name='newDelegatedOffer'>
-        /// New delegated offer.
+        /// <param name='newOfferDelegation'>
+        /// New offer delegation parameter.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -106,7 +106,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<DelegatedOffer>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroup, string offer, string delegatedOffer, DelegatedOffer newDelegatedOffer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<OfferDelegation>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroup, string offer, string offerDelegationName, OfferDelegation newOfferDelegation, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get the list of offers.
         /// </summary>
@@ -116,8 +116,8 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <param name='offer'>
         /// Name of an offer.
         /// </param>
-        /// <param name='delegatedOffer'>
-        /// Name of a delgated offer.
+        /// <param name='offerDelegationName'>
+        /// Name of a offer delegation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -131,7 +131,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroup, string offer, string delegatedOffer, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroup, string offer, string offerDelegationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get the list of delegated offers.
         /// </summary>
@@ -153,6 +153,6 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<DelegatedOffer>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<OfferDelegation>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

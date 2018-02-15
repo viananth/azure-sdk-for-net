@@ -13,13 +13,13 @@ namespace Subscriptions.Tests
     public class OfferTests : SubscriptionsTestBase
     {
  
-        private void ValidateOffer(Offer ua) {
+        private void ValidateOffer(Offer offer) {
             // Resource
-            Assert.NotNull(ua);
-            Assert.NotNull(ua.Id);
-            Assert.NotNull(ua.Location);
-            Assert.NotNull(ua.Name);
-            Assert.NotNull(ua.Type);
+            Assert.NotNull(offer);
+            Assert.NotNull(offer.Id);
+            Assert.NotNull(offer.Location);
+            Assert.NotNull(offer.Name);
+            Assert.NotNull(offer.Type);
 
             // Offer
         }
@@ -46,6 +46,7 @@ namespace Subscriptions.Tests
             RunTest((client) => {
                 var allOffers = client.Offers.ListAll();
                 var resourceGroups = new System.Collections.Generic.HashSet<string>();
+
                 allOffers.ForEach(client.Offers.ListAllNext, (offer) => {
                     resourceGroups.Add(Common.GetResourceGroupFromId(offer.Id));
                 });

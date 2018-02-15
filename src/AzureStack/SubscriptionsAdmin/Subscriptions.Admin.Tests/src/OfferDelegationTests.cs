@@ -7,13 +7,14 @@ using Microsoft.AzureStack.Management.Subscriptions.Admin;
 using Microsoft.AzureStack.Management.Subscriptions.Admin.Models;
 using System;
 using Xunit;
+using System.Linq;
 
 namespace Subscriptions.Tests
 {
-    public class DelegatedOfferTests : SubscriptionsTestBase
+    public class OfferDelegationTests : SubscriptionsTestBase
     {
 
-        private void ValidateDelegatedOffer(DelegatedOffer item) {
+        private void ValidateOfferDelegation(OfferDelegation item) {
             // Resource
             Assert.NotNull(item);
             Assert.NotNull(item.Id);
@@ -21,50 +22,42 @@ namespace Subscriptions.Tests
             Assert.NotNull(item.Name);
             Assert.NotNull(item.Type);
 
-            // DelegatedOffer
-            Assert.NotNull(item.OfferDescription);
-            Assert.NotNull(item.OfferDisplayName);
-            Assert.NotNull(item.OfferName);
-            Assert.NotNull(item.OfferResourceGroupName);
-            Assert.NotNull(item.DelegatedProviderOfferDescription);
-            Assert.NotNull(item.DelegatedProviderOfferDisplayName);
-            Assert.NotNull(item.DelegatedProviderOfferName);
-            Assert.NotNull(item.DelegatedProviderOfferResourceGroupName);
-            Assert.NotNull(item.DelegatedProviderSubscriptionId);
+            // OfferDelegation
             Assert.NotNull(item.SubscriptionId);
         }
 
-        private void AssertSame(DelegatedOffer expected, DelegatedOffer given) {
+        private void AssertSame(OfferDelegation expected, OfferDelegation given) {
             // Resource
             Assert.Equal(expected.Id, given.Id);
             Assert.Equal(expected.Location, given.Location);
             Assert.Equal(expected.Name, given.Name);
             Assert.Equal(expected.Type, given.Type);
 
-            // DelegatedOffer
+            // OfferDelegation
+            Assert.Equal(expected.SubscriptionId, given.SubscriptionId);
         }
 
         [Fact]
-        public void TestListDelegatedOffers() {
+        public void TestListOfferDelegations() {
             RunTest((client) => {
                 var offers = client.Offers.ListAll();
                 Common.MapOverIPage(offers, client.Offers.ListAllNext, (offer) => {
                     var resourceGroup = Common.GetResourceGroupFromId(offer.Id);
                     var offerDelegations = client.OfferDelegations.List(resourceGroup, offer.Name);
-                    offerDelegations.ForEach(client.OfferDelegations.ListNext, ValidateDelegatedOffer);
+                    offerDelegations.ForEach(client.OfferDelegations.ListNext, ValidateOfferDelegation);
                 });
             });
         }
 
         [Fact]
-        public void TestListAllDelegatedOffers() {
+        public void TestListAllOfferDelegations() {
             RunTest((client) => {
                 var offers = client.Offers.ListAll();
                 Common.MapOverIPage(offers, client.Offers.ListAllNext, (offer) => {
                     var resourceGroup = Common.GetResourceGroupFromId(offer.Id);
                     var offerDelegations = client.OfferDelegations.List(resourceGroup, offer.Name);
                     offerDelegations.ForEach(client.OfferDelegations.ListNext, (dOffer) => {
-                        var result = client.OfferDelegations.Get(resourceGroup, offer.Name, dOffer.Name);
+                        var result = client.OfferDelegations.Get(resourceGroup, offer.Name, dOffer.Name.Split(new[] { '/' })[1]);
                         AssertSame(dOffer, result);
                     });
                 });
@@ -72,28 +65,39 @@ namespace Subscriptions.Tests
         }
 
         [Fact]
-        public void TestGetDelegatedOffer() {
+        //Test asssumes that theres a offer delegation for the first offer
+        public void TestGetOfferDelegation() {
             RunTest((client) => {
                 var offer = client.Offers.ListAll().GetFirst();
                 var resourceGroup = Common.GetResourceGroupFromId(offer.Id);
                 var offerDelegation = client.OfferDelegations.List(resourceGroup, offer.Name).GetFirst();
-                var result = client.OfferDelegations.Get(resourceGroup, offer.Name, offerDelegation.Name);
+                var offerDelegationName = (offerDelegation.Name.Split(new[] { '/' })[1]);
+                var result = client.OfferDelegations.Get(resourceGroup, offer.Name, offerDelegationName);
                 AssertSame(offerDelegation, result);
             });
         }
 
         [Fact]
-        public void TestCreateUpdateThenDeleteDelegatedOffer() {
+        //Test assumes that there is a delegated provider(reseller) subscription
+        public void TestCreateUpdateThenDeleteOfferDelegation() {
             RunTest((client) => {
                 var offer = client.Offers.ListAll().GetFirst();
+                var subscription = client.Subscriptions.List(new Microsoft.Rest.Azure.OData.ODataQuery<Subscription>("providerNamespace eq 'Microsoft.Subscriptions'")).First();
                 var resourceGroup = Common.GetResourceGroupFromId(offer.Id);
-                
-                var dOffer = new DelegatedOffer()
-                {
-                    
+                var offerDelegationName = "testOfferDelegation";
+
+                var offerDelegation = new OfferDelegation()
+                                {
+                                    SubscriptionId = subscription.SubscriptionId,
+                                    Location = "local",
                 };
 
-                var result = client.OfferDelegations.CreateOrUpdate(resourceGroup, offer.Name, "testDelegatedOffer", dOffer);
+                var result = client.OfferDelegations.CreateOrUpdate(resourceGroup, offer.Name, offerDelegationName, offerDelegation);
+
+                var createdDelegation = client.OfferDelegations.Get(resourceGroup, offer.Name, offerDelegationName);
+
+                AssertSame(createdDelegation, result);
+                client.OfferDelegations.Delete(resourceGroup, offer.Name, offerDelegationName);
             });
         }
 

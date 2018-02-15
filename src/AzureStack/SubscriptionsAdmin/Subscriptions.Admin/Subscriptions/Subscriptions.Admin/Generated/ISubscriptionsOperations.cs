@@ -12,6 +12,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
+    using Microsoft.Rest.Azure.OData;
     using Models;
     using System.Collections;
     using System.Collections.Generic;
@@ -26,6 +27,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <summary>
         /// Get the list of subscriptions.
         /// </summary>
+        /// <param name='odataQuery'>
+        /// OData parameters to apply to the operation.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -41,7 +45,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IEnumerable<Subscription>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IEnumerable<Subscription>>> ListWithHttpMessagesAsync(ODataQuery<Subscription> odataQuery = default(ODataQuery<Subscription>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get the list of subscriptions.
         /// </summary>

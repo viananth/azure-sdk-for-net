@@ -66,7 +66,7 @@ namespace Subscriptions.Tests
         public void TestGetDelegatedProvider() {
             RunTest((client) => {
                 var provider = client.DelegatedProviders.List().First();
-                var result = client.DelegatedProviders.Get(provider.Name);
+                var result = client.DelegatedProviders.Get(provider.SubscriptionId);
                 AssertSame(provider, result);
             });
         }
