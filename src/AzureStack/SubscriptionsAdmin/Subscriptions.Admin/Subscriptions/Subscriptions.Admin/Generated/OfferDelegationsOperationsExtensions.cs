@@ -33,7 +33,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='offer'>
             /// Name of an offer.
             /// </param>
-            public static IPage<DelegatedOffer> List(this IOfferDelegationsOperations operations, string resourceGroup, string offer)
+            public static IPage<OfferDelegation> List(this IOfferDelegationsOperations operations, string resourceGroup, string offer)
             {
                 return operations.ListAsync(resourceGroup, offer).GetAwaiter().GetResult();
             }
@@ -53,7 +53,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<DelegatedOffer>> ListAsync(this IOfferDelegationsOperations operations, string resourceGroup, string offer, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<OfferDelegation>> ListAsync(this IOfferDelegationsOperations operations, string resourceGroup, string offer, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroup, offer, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -73,12 +73,12 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='offer'>
             /// Name of an offer.
             /// </param>
-            /// <param name='delegatedOffer'>
-            /// Name of a delgated offer.
+            /// <param name='offerDelegationName'>
+            /// Name of a offer delegation.
             /// </param>
-            public static DelegatedOffer Get(this IOfferDelegationsOperations operations, string resourceGroup, string offer, string delegatedOffer)
+            public static OfferDelegation Get(this IOfferDelegationsOperations operations, string resourceGroup, string offer, string offerDelegationName)
             {
-                return operations.GetAsync(resourceGroup, offer, delegatedOffer).GetAwaiter().GetResult();
+                return operations.GetAsync(resourceGroup, offer, offerDelegationName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -93,15 +93,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='offer'>
             /// Name of an offer.
             /// </param>
-            /// <param name='delegatedOffer'>
-            /// Name of a delgated offer.
+            /// <param name='offerDelegationName'>
+            /// Name of a offer delegation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DelegatedOffer> GetAsync(this IOfferDelegationsOperations operations, string resourceGroup, string offer, string delegatedOffer, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<OfferDelegation> GetAsync(this IOfferDelegationsOperations operations, string resourceGroup, string offer, string offerDelegationName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroup, offer, delegatedOffer, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroup, offer, offerDelegationName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -119,15 +119,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='offer'>
             /// Name of an offer.
             /// </param>
-            /// <param name='delegatedOffer'>
-            /// Name of a delgated offer.
+            /// <param name='offerDelegationName'>
+            /// Name of a offer delegation.
             /// </param>
-            /// <param name='newDelegatedOffer'>
-            /// New delegated offer.
+            /// <param name='newOfferDelegation'>
+            /// New offer delegation parameter.
             /// </param>
-            public static DelegatedOffer CreateOrUpdate(this IOfferDelegationsOperations operations, string resourceGroup, string offer, string delegatedOffer, DelegatedOffer newDelegatedOffer)
+            public static OfferDelegation CreateOrUpdate(this IOfferDelegationsOperations operations, string resourceGroup, string offer, string offerDelegationName, OfferDelegation newOfferDelegation)
             {
-                return operations.CreateOrUpdateAsync(resourceGroup, offer, delegatedOffer, newDelegatedOffer).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(resourceGroup, offer, offerDelegationName, newOfferDelegation).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -142,18 +142,18 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='offer'>
             /// Name of an offer.
             /// </param>
-            /// <param name='delegatedOffer'>
-            /// Name of a delgated offer.
+            /// <param name='offerDelegationName'>
+            /// Name of a offer delegation.
             /// </param>
-            /// <param name='newDelegatedOffer'>
-            /// New delegated offer.
+            /// <param name='newOfferDelegation'>
+            /// New offer delegation parameter.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DelegatedOffer> CreateOrUpdateAsync(this IOfferDelegationsOperations operations, string resourceGroup, string offer, string delegatedOffer, DelegatedOffer newDelegatedOffer, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<OfferDelegation> CreateOrUpdateAsync(this IOfferDelegationsOperations operations, string resourceGroup, string offer, string offerDelegationName, OfferDelegation newOfferDelegation, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroup, offer, delegatedOffer, newDelegatedOffer, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroup, offer, offerDelegationName, newOfferDelegation, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -171,12 +171,12 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='offer'>
             /// Name of an offer.
             /// </param>
-            /// <param name='delegatedOffer'>
-            /// Name of a delgated offer.
+            /// <param name='offerDelegationName'>
+            /// Name of a offer delegation.
             /// </param>
-            public static void Delete(this IOfferDelegationsOperations operations, string resourceGroup, string offer, string delegatedOffer)
+            public static void Delete(this IOfferDelegationsOperations operations, string resourceGroup, string offer, string offerDelegationName)
             {
-                operations.DeleteAsync(resourceGroup, offer, delegatedOffer).GetAwaiter().GetResult();
+                operations.DeleteAsync(resourceGroup, offer, offerDelegationName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -191,15 +191,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='offer'>
             /// Name of an offer.
             /// </param>
-            /// <param name='delegatedOffer'>
-            /// Name of a delgated offer.
+            /// <param name='offerDelegationName'>
+            /// Name of a offer delegation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this IOfferDelegationsOperations operations, string resourceGroup, string offer, string delegatedOffer, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this IOfferDelegationsOperations operations, string resourceGroup, string offer, string offerDelegationName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroup, offer, delegatedOffer, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteWithHttpMessagesAsync(resourceGroup, offer, offerDelegationName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -211,7 +211,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<DelegatedOffer> ListNext(this IOfferDelegationsOperations operations, string nextPageLink)
+            public static IPage<OfferDelegation> ListNext(this IOfferDelegationsOperations operations, string nextPageLink)
             {
                 return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
@@ -228,7 +228,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<DelegatedOffer>> ListNextAsync(this IOfferDelegationsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<OfferDelegation>> ListNextAsync(this IOfferDelegationsOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {

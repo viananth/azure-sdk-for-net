@@ -12,6 +12,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
+    using Microsoft.Rest.Azure.OData;
     using Models;
     using System.Collections;
     using System.Collections.Generic;
@@ -29,9 +30,12 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            public static IEnumerable<Subscription> List(this ISubscriptionsOperations operations)
+            /// <param name='odataQuery'>
+            /// OData parameters to apply to the operation.
+            /// </param>
+            public static IEnumerable<Subscription> List(this ISubscriptionsOperations operations, ODataQuery<Subscription> odataQuery = default(ODataQuery<Subscription>))
             {
-                return operations.ListAsync().GetAwaiter().GetResult();
+                return operations.ListAsync(odataQuery).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -40,12 +44,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='odataQuery'>
+            /// OData parameters to apply to the operation.
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IEnumerable<Subscription>> ListAsync(this ISubscriptionsOperations operations, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IEnumerable<Subscription>> ListAsync(this ISubscriptionsOperations operations, ODataQuery<Subscription> odataQuery = default(ODataQuery<Subscription>), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(odataQuery, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
