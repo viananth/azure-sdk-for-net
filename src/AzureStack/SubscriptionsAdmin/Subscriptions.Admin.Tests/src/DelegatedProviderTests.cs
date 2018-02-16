@@ -13,15 +13,21 @@ namespace Subscriptions.Tests
     public class DelegatedProviderTests : SubscriptionsTestBase
     {
 
-        private void ValidateSubscription(Subscription item) {
-            // Resource
-            Assert.NotNull(item);
-            Assert.NotNull(item.Id);
-            Assert.NotNull(item.Location);
-            Assert.NotNull(item.Name);
-            Assert.NotNull(item.Type);
-
+        private void ValidateSubscription(Subscription subscription) {
             // DelegatedProvider
+            Assert.NotNull(subscription);
+            Assert.NotNull(subscription.Id);
+            //Assert.NotNull(subscription.Location);
+            //Assert.NotNull(subscription.Name);
+            //Assert.NotNull(subscription.Type);
+
+            Assert.NotNull(subscription.OfferId);
+            Assert.NotNull(subscription.Owner);
+            Assert.NotNull(subscription.RoutingResourceManagerType);
+            Assert.NotNull(subscription.SubscriptionId);
+            Assert.NotNull(subscription.DisplayName);
+            Assert.NotNull(subscription.State);
+            Assert.NotNull(subscription.TenantId);
         }
 
         private void AssertSame(Subscription expected, Subscription given) {
@@ -56,7 +62,7 @@ namespace Subscriptions.Tests
             RunTest((client) => {
                 var delegatedProviders = client.DelegatedProviders.List();
                 delegatedProviders.ForEach((provider) => {
-                    var result = client.DelegatedProviders.Get(provider.Name);
+                    var result = client.DelegatedProviders.Get(provider.SubscriptionId);
                     AssertSame(provider, result);
                 });
             });

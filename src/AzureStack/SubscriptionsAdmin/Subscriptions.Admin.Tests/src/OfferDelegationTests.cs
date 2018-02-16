@@ -97,6 +97,7 @@ namespace Subscriptions.Tests
                 var createdDelegation = client.OfferDelegations.Get(resourceGroup, offer.Name, offerDelegationName);
 
                 AssertSame(createdDelegation, result);
+
                 client.OfferDelegations.Delete(resourceGroup, offer.Name, offerDelegationName);
             });
         }

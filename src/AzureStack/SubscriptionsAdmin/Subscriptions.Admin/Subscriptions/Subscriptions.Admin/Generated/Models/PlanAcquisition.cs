@@ -13,33 +13,28 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
     /// Represents the acquisition of an add-on plan for a subscription.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class AcquiredPlan : Resource
+    public partial class PlanAcquisition
     {
         /// <summary>
-        /// Initializes a new instance of the AcquiredPlan class.
+        /// Initializes a new instance of the PlanAcquisition class.
         /// </summary>
-        public AcquiredPlan()
+        public PlanAcquisition()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the AcquiredPlan class.
+        /// Initializes a new instance of the PlanAcquisition class.
         /// </summary>
-        /// <param name="id">URI of the resource.</param>
-        /// <param name="name">Name of the resource.</param>
-        /// <param name="type">Type of resource.</param>
-        /// <param name="location">Location where resource is location.</param>
-        /// <param name="tags">List of key-value pairs.</param>
         /// <param name="acquisitionId">Acquisition identifier.</param>
+        /// <param name="id">Identifier in the tenant subscription
+        /// context.</param>
         /// <param name="planId">Plan identifier in the tenant subscription
         /// context.</param>
         /// <param name="externalReferenceId">External reference
@@ -48,10 +43,10 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         /// values include: 'NotSpecified', 'Accepted', 'Failed',
         /// 'Succeeded'</param>
         /// <param name="acquisitionTime">Acquisition time.</param>
-        public AcquiredPlan(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string acquisitionId = default(string), string planId = default(string), string externalReferenceId = default(string), string provisioningState = default(string), System.DateTime? acquisitionTime = default(System.DateTime?))
-            : base(id, name, type, location, tags)
+        public PlanAcquisition(string acquisitionId = default(string), string id = default(string), string planId = default(string), string externalReferenceId = default(string), string provisioningState = default(string), System.DateTime? acquisitionTime = default(System.DateTime?))
         {
             AcquisitionId = acquisitionId;
+            Id = id;
             PlanId = planId;
             ExternalReferenceId = externalReferenceId;
             ProvisioningState = provisioningState;
@@ -69,6 +64,12 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.acquisitionId")]
         public string AcquisitionId { get; set; }
+
+        /// <summary>
+        /// Gets or sets identifier in the tenant subscription context.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.id")]
+        public string Id { get; set; }
 
         /// <summary>
         /// Gets or sets plan identifier in the tenant subscription context.

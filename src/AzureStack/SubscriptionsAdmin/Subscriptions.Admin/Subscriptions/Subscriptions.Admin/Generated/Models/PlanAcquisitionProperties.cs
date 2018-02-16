@@ -16,20 +16,22 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
     /// <summary>
     /// Represents the acquisition of an add-on plan for a subscription.
     /// </summary>
-    public partial class AcquiredPlanProperties
+    public partial class PlanAcquisitionProperties
     {
         /// <summary>
-        /// Initializes a new instance of the AcquiredPlanProperties class.
+        /// Initializes a new instance of the PlanAcquisitionProperties class.
         /// </summary>
-        public AcquiredPlanProperties()
+        public PlanAcquisitionProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the AcquiredPlanProperties class.
+        /// Initializes a new instance of the PlanAcquisitionProperties class.
         /// </summary>
         /// <param name="acquisitionId">Acquisition identifier.</param>
+        /// <param name="id">Identifier in the tenant subscription
+        /// context.</param>
         /// <param name="planId">Plan identifier in the tenant subscription
         /// context.</param>
         /// <param name="externalReferenceId">External reference
@@ -38,9 +40,10 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         /// values include: 'NotSpecified', 'Accepted', 'Failed',
         /// 'Succeeded'</param>
         /// <param name="acquisitionTime">Acquisition time.</param>
-        public AcquiredPlanProperties(string acquisitionId = default(string), string planId = default(string), string externalReferenceId = default(string), string provisioningState = default(string), System.DateTime? acquisitionTime = default(System.DateTime?))
+        public PlanAcquisitionProperties(string acquisitionId = default(string), string id = default(string), string planId = default(string), string externalReferenceId = default(string), string provisioningState = default(string), System.DateTime? acquisitionTime = default(System.DateTime?))
         {
             AcquisitionId = acquisitionId;
+            Id = id;
             PlanId = planId;
             ExternalReferenceId = externalReferenceId;
             ProvisioningState = provisioningState;
@@ -58,6 +61,12 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         /// </summary>
         [JsonProperty(PropertyName = "acquisitionId")]
         public string AcquisitionId { get; set; }
+
+        /// <summary>
+        /// Gets or sets identifier in the tenant subscription context.
+        /// </summary>
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
 
         /// <summary>
         /// Gets or sets plan identifier in the tenant subscription context.

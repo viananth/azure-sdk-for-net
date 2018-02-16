@@ -67,14 +67,24 @@ namespace Subscriptions.Tests
         [Fact]
         public void TestCreateUpdateThenDeleteDirectoryTenant() {
             RunTest((client) => {
+                var directoryTenantName = "azurestackci05.onmicrosoft.in";
+
                 var tenantDir = new DirectoryTenant(location: "local")
                 {
                     TenantId = Guid.NewGuid().ToString()
                 };
-                var result = client.DirectoryTenants.CreateOrUpdate("System.local", "testingDirectoryTenant",  tenantDir);
                 tenantDir.TenantId = Guid.NewGuid().ToString();
-                result = client.DirectoryTenants.CreateOrUpdate("System.local", "testingDirectoryTenant", tenantDir);
+                var result = client.DirectoryTenants.CreateOrUpdate("System.local", directoryTenantName, tenantDir);
+
+                var createdTenant = client.DirectoryTenants.Get("System.Local", directoryTenantName);
                 Assert.Equal(tenantDir.TenantId, result.TenantId);
+                Assert.Equal(tenantDir.TenantId, createdTenant.TenantId);
+
+                client.DirectoryTenants.Delete("System.Local", tenantDir.TenantId);
+
+                //Product BUG, the following fails
+                //var deletedTenant = client.DirectoryTenants.Get("System.Local", directoryTenantName);
+                //Assert.Null(deletedTenant);
             });
         }
     }

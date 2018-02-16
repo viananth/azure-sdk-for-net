@@ -53,8 +53,8 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <summary>
         /// Get a collection of all acquired plans that subscription has access to.
         /// </summary>
-        /// <param name='targetSubscription'>
-        /// The target subscription.
+        /// <param name='targetSubscriptionId'>
+        /// The target subscription ID.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -77,15 +77,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<AcquiredPlan>>> ListWithHttpMessagesAsync(string targetSubscription, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<PlanAcquisition>>> ListWithHttpMessagesAsync(string targetSubscriptionId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            if (targetSubscription == null)
+            if (targetSubscriptionId == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "targetSubscription");
+                throw new ValidationException(ValidationRules.CannotBeNull, "targetSubscriptionId");
             }
             if (Client.ApiVersion == null)
             {
@@ -98,7 +98,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("targetSubscription", targetSubscription);
+                tracingParameters.Add("targetSubscriptionId", targetSubscriptionId);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
             }
@@ -106,7 +106,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             var _baseUrl = Client.BaseUri.AbsoluteUri;
             var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}/acquiredPlans").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            _url = _url.Replace("{targetSubscription}", System.Uri.EscapeDataString(targetSubscription));
+            _url = _url.Replace("{targetSubscriptionId}", System.Uri.EscapeDataString(targetSubscriptionId));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -205,7 +205,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<AcquiredPlan>>();
+            var _result = new AzureOperationResponse<IPage<PlanAcquisition>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -218,7 +218,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<AcquiredPlan>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<PlanAcquisition>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -240,11 +240,11 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <summary>
         /// Get an acquired plan from name.
         /// </summary>
-        /// <param name='targetSubscription'>
-        /// The target subscription.
+        /// <param name='targetSubscriptionId'>
+        /// The target subscription ID.
         /// </param>
-        /// <param name='plan'>
-        /// Name of the plan.
+        /// <param name='planAcquisitionId'>
+        /// The plan acquisition Identifier
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -267,19 +267,19 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<AcquiredPlan>> GetWithHttpMessagesAsync(string targetSubscription, string plan, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<PlanAcquisition>> GetWithHttpMessagesAsync(string targetSubscriptionId, string planAcquisitionId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            if (targetSubscription == null)
+            if (targetSubscriptionId == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "targetSubscription");
+                throw new ValidationException(ValidationRules.CannotBeNull, "targetSubscriptionId");
             }
-            if (plan == null)
+            if (planAcquisitionId == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "plan");
+                throw new ValidationException(ValidationRules.CannotBeNull, "planAcquisitionId");
             }
             if (Client.ApiVersion == null)
             {
@@ -292,17 +292,17 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("targetSubscription", targetSubscription);
-                tracingParameters.Add("plan", plan);
+                tracingParameters.Add("targetSubscriptionId", targetSubscriptionId);
+                tracingParameters.Add("planAcquisitionId", planAcquisitionId);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}/acquiredPlans/{plan}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}/acquiredPlans/{planAcquisitionId}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            _url = _url.Replace("{targetSubscription}", System.Uri.EscapeDataString(targetSubscription));
-            _url = _url.Replace("{plan}", System.Uri.EscapeDataString(plan));
+            _url = _url.Replace("{targetSubscriptionId}", System.Uri.EscapeDataString(targetSubscriptionId));
+            _url = _url.Replace("{planAcquisitionId}", System.Uri.EscapeDataString(planAcquisitionId));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -401,7 +401,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<AcquiredPlan>();
+            var _result = new AzureOperationResponse<PlanAcquisition>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -414,7 +414,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<AcquiredPlan>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<PlanAcquisition>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -436,11 +436,11 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <summary>
         /// Deletes an acquired plan.
         /// </summary>
-        /// <param name='targetSubscription'>
-        /// The target subscription.
+        /// <param name='targetSubscriptionId'>
+        /// The target subscription ID.
         /// </param>
-        /// <param name='plan'>
-        /// Name of the plan.
+        /// <param name='planAcquisitionId'>
+        /// The plan acquisition Identifier
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -460,19 +460,19 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string targetSubscription, string plan, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string targetSubscriptionId, string planAcquisitionId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            if (targetSubscription == null)
+            if (targetSubscriptionId == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "targetSubscription");
+                throw new ValidationException(ValidationRules.CannotBeNull, "targetSubscriptionId");
             }
-            if (plan == null)
+            if (planAcquisitionId == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "plan");
+                throw new ValidationException(ValidationRules.CannotBeNull, "planAcquisitionId");
             }
             if (Client.ApiVersion == null)
             {
@@ -485,17 +485,17 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("targetSubscription", targetSubscription);
-                tracingParameters.Add("plan", plan);
+                tracingParameters.Add("targetSubscriptionId", targetSubscriptionId);
+                tracingParameters.Add("planAcquisitionId", planAcquisitionId);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Delete", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}/acquiredPlans/{plan}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}/acquiredPlans/{planAcquisitionId}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            _url = _url.Replace("{targetSubscription}", System.Uri.EscapeDataString(targetSubscription));
-            _url = _url.Replace("{plan}", System.Uri.EscapeDataString(plan));
+            _url = _url.Replace("{targetSubscriptionId}", System.Uri.EscapeDataString(targetSubscriptionId));
+            _url = _url.Replace("{planAcquisitionId}", System.Uri.EscapeDataString(planAcquisitionId));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -611,11 +611,11 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <summary>
         /// Creates an acquired plan.
         /// </summary>
-        /// <param name='targetSubscription'>
-        /// The target subscription.
+        /// <param name='targetSubscriptionId'>
+        /// The target subscription ID.
         /// </param>
-        /// <param name='plan'>
-        /// Name of the plan.
+        /// <param name='planAcquisitionId'>
+        /// The plan acquisition Identifier
         /// </param>
         /// <param name='newAcquiredPlan'>
         /// The new acquired plan.
@@ -641,19 +641,19 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<AcquiredPlan>> CreateWithHttpMessagesAsync(string targetSubscription, string plan, AcquiredPlanProperties newAcquiredPlan, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<PlanAcquisition>> CreateWithHttpMessagesAsync(string targetSubscriptionId, string planAcquisitionId, PlanAcquisitionProperties newAcquiredPlan, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            if (targetSubscription == null)
+            if (targetSubscriptionId == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "targetSubscription");
+                throw new ValidationException(ValidationRules.CannotBeNull, "targetSubscriptionId");
             }
-            if (plan == null)
+            if (planAcquisitionId == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "plan");
+                throw new ValidationException(ValidationRules.CannotBeNull, "planAcquisitionId");
             }
             if (Client.ApiVersion == null)
             {
@@ -670,18 +670,18 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
-                tracingParameters.Add("targetSubscription", targetSubscription);
-                tracingParameters.Add("plan", plan);
+                tracingParameters.Add("targetSubscriptionId", targetSubscriptionId);
+                tracingParameters.Add("planAcquisitionId", planAcquisitionId);
                 tracingParameters.Add("newAcquiredPlan", newAcquiredPlan);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Create", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}/acquiredPlans/{plan}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}/acquiredPlans/{planAcquisitionId}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
-            _url = _url.Replace("{targetSubscription}", System.Uri.EscapeDataString(targetSubscription));
-            _url = _url.Replace("{plan}", System.Uri.EscapeDataString(plan));
+            _url = _url.Replace("{targetSubscriptionId}", System.Uri.EscapeDataString(targetSubscriptionId));
+            _url = _url.Replace("{planAcquisitionId}", System.Uri.EscapeDataString(planAcquisitionId));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -786,7 +786,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<AcquiredPlan>();
+            var _result = new AzureOperationResponse<PlanAcquisition>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -799,7 +799,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<AcquiredPlan>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<PlanAcquisition>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -817,7 +817,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<AcquiredPlan>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<PlanAcquisition>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -863,7 +863,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<AcquiredPlan>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<PlanAcquisition>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (nextPageLink == null)
             {
@@ -977,7 +977,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IPage<AcquiredPlan>>();
+            var _result = new AzureOperationResponse<IPage<PlanAcquisition>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -990,7 +990,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<AcquiredPlan>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<PlanAcquisition>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {

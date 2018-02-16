@@ -40,6 +40,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         /// <param name="type">Type of resource.</param>
         /// <param name="location">Location where resource is location.</param>
         /// <param name="tags">List of key-value pairs.</param>
+        /// <param name="offerName">Name of the Offer.</param>
         /// <param name="displayName">Display name of offer.</param>
         /// <param name="description">Description of offer.</param>
         /// <param name="externalReferenceId">External reference
@@ -54,9 +55,10 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         /// offer.</param>
         /// <param name="addonPlanDefinition">References to add-on plans that a
         /// tenant can optionally acquire as a part of the offer.</param>
-        public Offer(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string displayName = default(string), string description = default(string), string externalReferenceId = default(string), string state = default(string), int? subscriptionCount = default(int?), int? maxSubscriptionsPerAccount = default(int?), IList<string> basePlanIds = default(IList<string>), IList<AddonPlanDefinition> addonPlanDefinition = default(IList<AddonPlanDefinition>))
+        public Offer(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string offerName = default(string), string displayName = default(string), string description = default(string), string externalReferenceId = default(string), string state = default(string), int? subscriptionCount = default(int?), int? maxSubscriptionsPerAccount = default(int?), IList<string> basePlanIds = default(IList<string>), IList<AddonPlanDefinition> addonPlanDefinition = default(IList<AddonPlanDefinition>))
             : base(id, name, type, location, tags)
         {
+            OfferName = offerName;
             DisplayName = displayName;
             Description = description;
             ExternalReferenceId = externalReferenceId;
@@ -72,6 +74,12 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets name of the Offer.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.name")]
+        public string OfferName { get; set; }
 
         /// <summary>
         /// Gets or sets display name of offer.

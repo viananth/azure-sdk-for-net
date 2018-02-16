@@ -6,6 +6,8 @@
 using Microsoft.AzureStack.Management.Subscriptions.Admin;
 using Microsoft.AzureStack.Management.Subscriptions.Admin.Models;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace Subscriptions.Tests
@@ -13,15 +15,18 @@ namespace Subscriptions.Tests
     public class PlanTests : SubscriptionsTestBase
     {
 
-        private void ValidateUsageAggregate(Plan ua) {
+        private void ValidatePlan(Plan plan) {
             // Resource
-            Assert.NotNull(ua);
-            Assert.NotNull(ua.Id);
-            Assert.NotNull(ua.Location);
-            Assert.NotNull(ua.Name);
-            Assert.NotNull(ua.Type);
+            Assert.NotNull(plan);
+            Assert.NotNull(plan.Id);
+            Assert.NotNull(plan.Location);
+            Assert.NotNull(plan.Name);
+            Assert.NotNull(plan.Type);
 
             // Plan
+            Assert.NotNull(plan.DisplayName);
+            Assert.NotNull(plan.PlanName);
+            Assert.NotEmpty(plan.QuotaIds);
         }
 
         private void AssertSame(Plan expected, Plan given) {
@@ -34,6 +39,7 @@ namespace Subscriptions.Tests
             // Plan
 
         }
+
         [Fact]
         public void TestListPlans() {
             RunTest((client) => {
@@ -49,5 +55,40 @@ namespace Subscriptions.Tests
                 });
             });
         }
+
+        [Fact]
+        public void TestCreateUpdateThenDeletePlan()
+        {
+            RunTest((client) => {
+                var location = "local";
+                var rg = "balarg";
+                var name = "testplan";
+                var descriptiopn = "description of the plan";
+
+                var quota = client.Quotas.List(location).First();
+
+                var result = client.Plans.CreateOrUpdate(
+                    rg,
+                    name,
+                    new Plan(
+                        planName: name,
+                        displayName: name,
+                        location: location,
+                        description: name,
+                        quotaIds: new List<string> { quota.Id }
+                    ));
+
+                ValidatePlan(result);
+                var plan = client.Plans.Get(rg, name);
+                ValidatePlan(plan);
+
+                client.Plans.Delete(rg, name);
+
+                plan = client.Plans.Get(rg, name);
+
+                Assert.Null(plan);
+            });
+        }
+
     }
 }
