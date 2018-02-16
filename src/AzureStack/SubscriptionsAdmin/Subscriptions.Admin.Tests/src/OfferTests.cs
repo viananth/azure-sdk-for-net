@@ -5,6 +5,7 @@
 
 using Microsoft.AzureStack.Management.Subscriptions.Admin;
 using Microsoft.AzureStack.Management.Subscriptions.Admin.Models;
+using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
@@ -90,20 +91,24 @@ namespace Subscriptions.Tests
         [Fact]
         public void TestCreateUpdateThenDeleteOffer() {
             RunTest((client) => {
-                var offerName = "testOffer";
+                var rg = "balarg";
+                var offerName = "testOffer1";
                 var plan = client.Plans.ListAll().First();
                 var offer = new Offer()
                 {
                     Description = "This is a test Offer",
                     DisplayName = "Test Offer",
+                    Location = "local",
+                    OfferName = offerName,
                     MaxSubscriptionsPerAccount = 100,
-                    BasePlanIds = new System.Collections.Generic.List<string>() {plan.Id}
+                    BasePlanIds = new List<string>() {plan.Id}
                 };
                 
-                var result = client.Offers.CreateOrUpdate("TestOffer", offerName, offer);
-                client.Offers.Delete("TestOffer", offerName);
+                var result = client.Offers.CreateOrUpdate(rg, offerName, offer);
 
-                
+                offer = client.Offers.Get("balarg", offerName);
+
+                client.Offers.Delete("TestOffer", offerName);
             });
         }
     }

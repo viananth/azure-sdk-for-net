@@ -27,8 +27,8 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// Get a collection of all acquired plans that subscription has access
         /// to.
         /// </summary>
-        /// <param name='targetSubscription'>
-        /// The target subscription.
+        /// <param name='targetSubscriptionId'>
+        /// The target subscription ID.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -45,15 +45,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<AcquiredPlan>>> ListWithHttpMessagesAsync(string targetSubscription, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<PlanAcquisition>>> ListWithHttpMessagesAsync(string targetSubscriptionId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get an acquired plan from name.
         /// </summary>
-        /// <param name='targetSubscription'>
-        /// The target subscription.
+        /// <param name='targetSubscriptionId'>
+        /// The target subscription ID.
         /// </param>
-        /// <param name='plan'>
-        /// Name of the plan.
+        /// <param name='planAcquisitionId'>
+        /// The plan acquisition Identifier
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -70,15 +70,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<AcquiredPlan>> GetWithHttpMessagesAsync(string targetSubscription, string plan, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<PlanAcquisition>> GetWithHttpMessagesAsync(string targetSubscriptionId, string planAcquisitionId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes an acquired plan.
         /// </summary>
-        /// <param name='targetSubscription'>
-        /// The target subscription.
+        /// <param name='targetSubscriptionId'>
+        /// The target subscription ID.
         /// </param>
-        /// <param name='plan'>
-        /// Name of the plan.
+        /// <param name='planAcquisitionId'>
+        /// The plan acquisition Identifier
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -92,15 +92,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string targetSubscription, string plan, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string targetSubscriptionId, string planAcquisitionId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Creates an acquired plan.
         /// </summary>
-        /// <param name='targetSubscription'>
-        /// The target subscription.
+        /// <param name='targetSubscriptionId'>
+        /// The target subscription ID.
         /// </param>
-        /// <param name='plan'>
-        /// Name of the plan.
+        /// <param name='planAcquisitionId'>
+        /// The plan acquisition Identifier
         /// </param>
         /// <param name='newAcquiredPlan'>
         /// The new acquired plan.
@@ -120,7 +120,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<AcquiredPlan>> CreateWithHttpMessagesAsync(string targetSubscription, string plan, AcquiredPlanProperties newAcquiredPlan, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<PlanAcquisition>> CreateWithHttpMessagesAsync(string targetSubscriptionId, string planAcquisitionId, PlanAcquisitionProperties newAcquiredPlan, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get a collection of all acquired plans that subscription has access
         /// to.
@@ -143,6 +143,6 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<AcquiredPlan>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<PlanAcquisition>>> ListNextWithHttpMessagesAsync(string nextPageLink, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

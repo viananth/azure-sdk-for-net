@@ -27,12 +27,12 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='targetSubscription'>
-            /// The target subscription.
+            /// <param name='targetSubscriptionId'>
+            /// The target subscription ID.
             /// </param>
-            public static IPage<AcquiredPlan> List(this IAcquiredPlansOperations operations, string targetSubscription)
+            public static IPage<PlanAcquisition> List(this IAcquiredPlansOperations operations, string targetSubscriptionId)
             {
-                return operations.ListAsync(targetSubscription).GetAwaiter().GetResult();
+                return operations.ListAsync(targetSubscriptionId).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -41,15 +41,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='targetSubscription'>
-            /// The target subscription.
+            /// <param name='targetSubscriptionId'>
+            /// The target subscription ID.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<AcquiredPlan>> ListAsync(this IAcquiredPlansOperations operations, string targetSubscription, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<PlanAcquisition>> ListAsync(this IAcquiredPlansOperations operations, string targetSubscriptionId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(targetSubscription, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(targetSubscriptionId, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -61,15 +61,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='targetSubscription'>
-            /// The target subscription.
+            /// <param name='targetSubscriptionId'>
+            /// The target subscription ID.
             /// </param>
-            /// <param name='plan'>
-            /// Name of the plan.
+            /// <param name='planAcquisitionId'>
+            /// The plan acquisition Identifier
             /// </param>
-            public static AcquiredPlan Get(this IAcquiredPlansOperations operations, string targetSubscription, string plan)
+            public static PlanAcquisition Get(this IAcquiredPlansOperations operations, string targetSubscriptionId, string planAcquisitionId)
             {
-                return operations.GetAsync(targetSubscription, plan).GetAwaiter().GetResult();
+                return operations.GetAsync(targetSubscriptionId, planAcquisitionId).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -78,18 +78,18 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='targetSubscription'>
-            /// The target subscription.
+            /// <param name='targetSubscriptionId'>
+            /// The target subscription ID.
             /// </param>
-            /// <param name='plan'>
-            /// Name of the plan.
+            /// <param name='planAcquisitionId'>
+            /// The plan acquisition Identifier
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<AcquiredPlan> GetAsync(this IAcquiredPlansOperations operations, string targetSubscription, string plan, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<PlanAcquisition> GetAsync(this IAcquiredPlansOperations operations, string targetSubscriptionId, string planAcquisitionId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(targetSubscription, plan, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(targetSubscriptionId, planAcquisitionId, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -101,15 +101,15 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='targetSubscription'>
-            /// The target subscription.
+            /// <param name='targetSubscriptionId'>
+            /// The target subscription ID.
             /// </param>
-            /// <param name='plan'>
-            /// Name of the plan.
+            /// <param name='planAcquisitionId'>
+            /// The plan acquisition Identifier
             /// </param>
-            public static void Delete(this IAcquiredPlansOperations operations, string targetSubscription, string plan)
+            public static void Delete(this IAcquiredPlansOperations operations, string targetSubscriptionId, string planAcquisitionId)
             {
-                operations.DeleteAsync(targetSubscription, plan).GetAwaiter().GetResult();
+                operations.DeleteAsync(targetSubscriptionId, planAcquisitionId).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -118,18 +118,18 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='targetSubscription'>
-            /// The target subscription.
+            /// <param name='targetSubscriptionId'>
+            /// The target subscription ID.
             /// </param>
-            /// <param name='plan'>
-            /// Name of the plan.
+            /// <param name='planAcquisitionId'>
+            /// The plan acquisition Identifier
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this IAcquiredPlansOperations operations, string targetSubscription, string plan, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteAsync(this IAcquiredPlansOperations operations, string targetSubscriptionId, string planAcquisitionId, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(targetSubscription, plan, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteWithHttpMessagesAsync(targetSubscriptionId, planAcquisitionId, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -138,18 +138,18 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='targetSubscription'>
-            /// The target subscription.
+            /// <param name='targetSubscriptionId'>
+            /// The target subscription ID.
             /// </param>
-            /// <param name='plan'>
-            /// Name of the plan.
+            /// <param name='planAcquisitionId'>
+            /// The plan acquisition Identifier
             /// </param>
             /// <param name='newAcquiredPlan'>
             /// The new acquired plan.
             /// </param>
-            public static AcquiredPlan Create(this IAcquiredPlansOperations operations, string targetSubscription, string plan, AcquiredPlanProperties newAcquiredPlan)
+            public static PlanAcquisition Create(this IAcquiredPlansOperations operations, string targetSubscriptionId, string planAcquisitionId, PlanAcquisitionProperties newAcquiredPlan)
             {
-                return operations.CreateAsync(targetSubscription, plan, newAcquiredPlan).GetAwaiter().GetResult();
+                return operations.CreateAsync(targetSubscriptionId, planAcquisitionId, newAcquiredPlan).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -158,11 +158,11 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='targetSubscription'>
-            /// The target subscription.
+            /// <param name='targetSubscriptionId'>
+            /// The target subscription ID.
             /// </param>
-            /// <param name='plan'>
-            /// Name of the plan.
+            /// <param name='planAcquisitionId'>
+            /// The plan acquisition Identifier
             /// </param>
             /// <param name='newAcquiredPlan'>
             /// The new acquired plan.
@@ -170,9 +170,9 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<AcquiredPlan> CreateAsync(this IAcquiredPlansOperations operations, string targetSubscription, string plan, AcquiredPlanProperties newAcquiredPlan, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<PlanAcquisition> CreateAsync(this IAcquiredPlansOperations operations, string targetSubscriptionId, string planAcquisitionId, PlanAcquisitionProperties newAcquiredPlan, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateWithHttpMessagesAsync(targetSubscription, plan, newAcquiredPlan, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateWithHttpMessagesAsync(targetSubscriptionId, planAcquisitionId, newAcquiredPlan, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -187,7 +187,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='nextPageLink'>
             /// The NextLink from the previous successful call to List operation.
             /// </param>
-            public static IPage<AcquiredPlan> ListNext(this IAcquiredPlansOperations operations, string nextPageLink)
+            public static IPage<PlanAcquisition> ListNext(this IAcquiredPlansOperations operations, string nextPageLink)
             {
                 return operations.ListNextAsync(nextPageLink).GetAwaiter().GetResult();
             }
@@ -204,7 +204,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<AcquiredPlan>> ListNextAsync(this IAcquiredPlansOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<PlanAcquisition>> ListNextAsync(this IAcquiredPlansOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
