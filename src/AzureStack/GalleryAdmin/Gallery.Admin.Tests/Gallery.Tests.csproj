@@ -8,6 +8,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <TargetFrameworks>netcoreapp1.1</TargetFrameworks>
+    <TargetFrameworks>netcoreapp1.1.2</TargetFrameworks>
+      <RuntimeFrameworkVersion>1.1.2</RuntimeFrameworkVersion>
+
   </PropertyGroup>
 
   <ItemGroup>

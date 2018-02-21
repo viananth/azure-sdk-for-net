@@ -16,7 +16,7 @@ namespace Gallery.Tests
         
 
         [Fact]
-        public void TestListGalleryItems() {
+        public void TestListAllGalleryItems() {
             RunTest((client) => {
                 var galleryItems = client.GalleryItems.List();
                 Assert.NotNull(galleryItems);
@@ -27,8 +27,32 @@ namespace Gallery.Tests
         public void TestGetGalleryItem()
         {
             RunTest((client) => {
-                var galleryItem = client.GalleryItems.Get("Microsoft.KeyVault.1.0.14");
+                var galleryItems = client.GalleryItems.List();
+                Assert.NotNull(galleryItems);
+                foreach (var galleryItem in galleryItems)
+                {
+                    var retrievedGalleryItem = client.GalleryItems.Get(galleryItem.Name);
+                    Assert.Equal(galleryItem.Name, retrievedGalleryItem.Name);
+                }
+            });
+        }
+
+        [Fact]
+        public void TestCreateAndDeleteGalleryItem()
+        {
+            RunTest((client) => {
+                var galleryItemUri = "https://github.com/Azure/AzureStack-Tools/raw/master/ComputeAdmin/microsoft.vmss.1.3.6.azpkg";
+                var name = "microsoft.vmss.1.3.6";
+
+                // Delete if it already exists
+                client.GalleryItems.Delete(name);
+
+                // Create a gallery item
+                var galleryItem = client.GalleryItems.Create(galleryItemUri);
                 Assert.NotNull(galleryItem);
+
+                // Delete the gallery item
+                client.GalleryItems.Delete(name);
             });
         }
     }

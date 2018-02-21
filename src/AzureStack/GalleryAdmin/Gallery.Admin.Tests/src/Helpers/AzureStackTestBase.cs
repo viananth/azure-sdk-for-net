@@ -73,7 +73,7 @@ namespace Gallery.Tests
             {
                 if (caught != null)
                 {
-                    throw new Exception("Test failed", caught);
+                    throw new Exception("Test failed");
                 }
             }
         }
