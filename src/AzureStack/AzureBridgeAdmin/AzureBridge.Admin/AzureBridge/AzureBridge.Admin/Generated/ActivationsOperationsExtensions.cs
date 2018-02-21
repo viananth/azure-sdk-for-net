@@ -110,9 +110,12 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
             /// <param name='activation'>
             /// new activation.
             /// </param>
-            public static ActivationResource CreateOrUpdate(this IActivationsOperations operations, string resourceGroup, string activationName, Activation activation)
+            /// <param name='location'>
+            /// Resource location.
+            /// </param>
+            public static ActivationResource CreateOrUpdate(this IActivationsOperations operations, string resourceGroup, string activationName, Activation activation, string location)
             {
-                return operations.CreateOrUpdateAsync(resourceGroup, activationName, activation).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(resourceGroup, activationName, activation, location).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -130,12 +133,15 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
             /// <param name='activation'>
             /// new activation.
             /// </param>
+            /// <param name='location'>
+            /// Resource location.
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ActivationResource> CreateOrUpdateAsync(this IActivationsOperations operations, string resourceGroup, string activationName, Activation activation, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ActivationResource> CreateOrUpdateAsync(this IActivationsOperations operations, string resourceGroup, string activationName, Activation activation, string location, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroup, activationName, activation, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroup, activationName, activation, location, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

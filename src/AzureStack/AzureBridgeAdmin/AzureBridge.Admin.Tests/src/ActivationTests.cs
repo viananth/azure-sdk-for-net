@@ -15,7 +15,7 @@ namespace AzureBridge.Tests
         [Fact]
         public void TestListActivations() {
             RunTest((client) => {
-                var list = client.Activations.List();
+                var list = client.Activations.List("azurestack-activation");
                 Common.WriteIPagesToFile(list, client.Activations.ListNext, "TestListActivations");
             });
         }

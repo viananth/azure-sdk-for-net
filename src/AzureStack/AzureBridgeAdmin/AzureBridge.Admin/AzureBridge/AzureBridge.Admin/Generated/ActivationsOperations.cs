@@ -445,6 +445,9 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         /// <param name='activation'>
         /// new activation.
         /// </param>
+        /// <param name='location'>
+        /// Resource location.
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -466,7 +469,7 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ActivationResource>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroup, string activationName, Activation activation, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ActivationResource>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroup, string activationName, Activation activation, string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -488,6 +491,10 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "activation");
             }
+            if (location == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "location");
+            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -498,6 +505,7 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
                 tracingParameters.Add("resourceGroup", resourceGroup);
                 tracingParameters.Add("activationName", activationName);
                 tracingParameters.Add("activation", activation);
+                tracingParameters.Add("location", location);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "CreateOrUpdate", tracingParameters);
             }
@@ -507,6 +515,7 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{resourceGroup}", System.Uri.EscapeDataString(resourceGroup));
             _url = _url.Replace("{activationName}", System.Uri.EscapeDataString(activationName));
+            _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
