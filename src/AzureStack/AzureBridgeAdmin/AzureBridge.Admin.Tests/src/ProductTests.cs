@@ -13,21 +13,22 @@ namespace AzureBridge.Tests
     public class ProductTests : AzureBridgeTestBase
     {
         [Fact]
-        public void TestListProducts() {
+        public void TestListAzsAzureBridgeProduct() {
             RunTest((client) => {
                 var list = client.Products.List("azurestack-activation", "default");
-                Common.WriteIPagesToFile(list, client.Products.ListNext, "TestListProducts");
+                Common.WriteIPagesToFile(list, client.Products.ListNext, "TestListAzsAzureBridgeProduct");
             });
         }
 
-        //[Fact]
-        //public void TestGetNonExistantProduct()
-        //{
-        //    RunTest((client) => {
-        //        var product = client.Products.Get("azurestack-activation", "default", "nonexsting-product");
-        //        Assert.Null(product);
-        //    });
-        //}
+        [Fact]
+        public void TestGetAzsAzureBridgeProductByName()
+        {
+            RunTest((client) =>
+            {
+                var product = client.Products.Get("azurestack-activation", "default", "Canonical.UbuntuServer1710-ARM.1.0.6");
+                Assert.NotNull(product);
+            });
+        }
 
     }
 }

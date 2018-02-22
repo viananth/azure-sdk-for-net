@@ -13,7 +13,16 @@ namespace AzureBridge.Tests
     public class DownloadedProductTests : AzureBridgeTestBase
     {
         [Fact]
-        public void TestListDownloadedProducts() {
+        public void TestDownloadAzsAzureBridgeProduct() {
+            RunTest((client) => {
+                var ProductName1 = "Canonical.UbuntuServer1710-ARM.1.0.6";
+                client.Products.BeginDownload("azurestack-activation", "default", ProductName1);
+            });
+        }
+
+        [Fact]
+        public void TestGetAzsAzureBridgeDownloadedProduct()
+        {
             RunTest((client) => {
                 var list = client.DownloadedProducts.List("azurestack-activation", "default");
                 Common.WriteIPagesToFile(list, client.DownloadedProducts.ListNext, "TestListDownloadedProducts");
@@ -21,12 +30,24 @@ namespace AzureBridge.Tests
         }
 
         [Fact]
-        public void TestGetNonExistantDownloadedProduct()
+        public void TestGetAzsAzureBridgeDownloadedProductByProductName()
         {
             RunTest((client) => {
-                var product = client.DownloadedProducts.Get("azurestack-activation", "default", "nonexsting -downloadedproduct");
-                Assert.Null(product);
+                var productName1 = "Canonical.UbuntuServer1710-ARM.1.0.6";
+                var product = client.DownloadedProducts.Get("azurestack-activation", "default", productName1);
+                Assert.NotNull(product);
             });
         }
+        /*
+        [Fact]
+        public void TestRemoveAzsAzureBridgeDownloadedProduct()
+        {
+            RunTest((client) => {
+                var productName1 = "Canonical.UbuntuServer1710-ARM.1.0.6";
+                client.DownloadedProducts.Delete("azurestack-activation", "default", productName1);
+                var deletedProduct = client.DownloadedProducts.Get("azurestack-activation", "default", productName1);
+                Assert.Null(deletedProduct);
+            });
+        } */
     }
 }
