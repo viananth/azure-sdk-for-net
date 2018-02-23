@@ -16,7 +16,7 @@ namespace AzureBridge.Tests
         public void TestDownloadAzsAzureBridgeProduct() {
             RunTest((client) => {
                 var ProductName1 = "Canonical.UbuntuServer1710-ARM.1.0.6";
-                client.Products.BeginDownload("azurestack-activation", "default", ProductName1);
+                client.Products.Download("azurestack-activation", "default", ProductName1);
             });
         }
 
