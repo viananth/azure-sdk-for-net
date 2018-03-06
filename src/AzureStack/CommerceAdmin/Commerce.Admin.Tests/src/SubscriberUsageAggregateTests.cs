@@ -38,6 +38,7 @@ namespace Commerce.Tests
         [Fact]
         public void TestListSubscriberUsageAggregatesFromLastTwoDays() {
             RunTest((client) => {
+
                 var testDate = new DateTime(2017,09,06);
                 testDate = DateTime.SpecifyKind(testDate, DateTimeKind.Utc);
                 var start = testDate.Floor();
@@ -48,11 +49,9 @@ namespace Commerce.Tests
                 AssertDateIsDayOnly(start, "start");
                 AssertDateIsDayOnly(end, "end");
 
-
                 var subscriberUsageAggregates = client.SubscriberUsageAggregates.List(start, end);
                 Assert.NotNull(subscriberUsageAggregates);
-                Assert.NotNull(subscriberUsageAggregates.Value);
-                subscriberUsageAggregates.Value.ForEach(ValidateUsageAggregate);
+                subscriberUsageAggregates.ForEach(ValidateUsageAggregate);
             });
         }
 

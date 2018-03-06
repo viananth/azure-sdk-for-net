@@ -1,0 +1,72 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/57567fab-bab7-4071-9281-8efeda4c7995/providers/Microsoft.Network.Admin/locations/local/quotas?api-version=2015-06-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc1NjdmYWItYmFiNy00MDcxLTkyODEtOGVmZWRhNGM3OTk1L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvcXVvdGFzP2FwaS12ZXJzaW9uPTIwMTUtMDYtMTU=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b2cbcb9a-b786-4453-9aed-5822aec77676"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"Default Quota\",\r\n      \"etag\": \"W/\\\"f6b0d071-da58-4a42-b5f7-b98e9f7b2dbf\\\"\",\r\n      \"type\": \"Microsoft.Network.Admin/quotas\",\r\n      \"location\": \"local\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"maxPublicIpsPerSubscription\": 50,\r\n        \"maxVnetsPerSubscription\": 50,\r\n        \"maxVirtualNetworkGatewaysPerSubscription\": 1,\r\n        \"maxVirtualNetworkGatewayConnectionsPerSubscription\": 2,\r\n        \"maxLoadBalancersPerSubscription\": 50,\r\n        \"maxNicsPerSubscription\": 100,\r\n        \"maxSecurityGroupsPerSubscription\": 50,\r\n        \"migrationPhase\": \"None\"\r\n      },\r\n      \"id\": \"/subscriptions/57567fab-bab7-4071-9281-8efeda4c7995/providers/Microsoft.Network.Admin/locations/local/quotas/Default Quota\"\r\n    },\r\n    {\r\n      \"name\": \"Jeff\",\r\n      \"etag\": \"W/\\\"849e3a58-cd73-4352-b154-767c24a8347f\\\"\",\r\n      \"type\": \"Microsoft.Network.Admin/quotas\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"maxPublicIpsPerSubscription\": 50,\r\n        \"maxVnetsPerSubscription\": 50,\r\n        \"maxVirtualNetworkGatewaysPerSubscription\": 1,\r\n        \"maxVirtualNetworkGatewayConnectionsPerSubscription\": 2,\r\n        \"maxLoadBalancersPerSubscription\": 50,\r\n        \"maxNicsPerSubscription\": 10,\r\n        \"maxSecurityGroupsPerSubscription\": 50,\r\n        \"migrationPhase\": \"None\"\r\n      },\r\n      \"id\": \"/subscriptions/57567fab-bab7-4071-9281-8efeda4c7995/providers/Microsoft.Network.Admin/locations/local/quotas/Jeff\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "1527"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 02 Mar 2018 22:17:23 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvTmiyY+XBrVlPSnrhdWFmiNs2MpwG7tD19CMz3rgXGM7st4FK16rpopOsaS68W+HzztcSV8fG1L94Y/G1L+xkGL0nECA5tT2H34P5JdmQ5QhliIqJopB8Vj+m/0EEVx2KxZiTYwS1qPRJgFE1XzuP"
+        ],
+        "x-ms-correlation-request-id": [
+          "1bb39a2b-fd15-4269-be35-29487f52912b"
+        ],
+        "x-ms-request-id": [
+          "904e5af4-e6ad-4f1d-b7f4-6ce35e7b7831"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14387"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20180302T221724Z:1bb39a2b-fd15-4269-be35-29487f52912b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "57567fab-bab7-4071-9281-8efeda4c7995"
+  }
+}
