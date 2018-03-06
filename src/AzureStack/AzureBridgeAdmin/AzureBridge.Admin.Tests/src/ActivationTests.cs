@@ -13,19 +13,19 @@ namespace AzureBridge.Tests
     public class ActivationTests : AzureBridgeTestBase
     {
         [Fact]
-        public void TestListActivations() {
+        public void TestListAzsAzureBridgeActivation() {
             RunTest((client) => {
-                var list = client.Activations.List();
-                Common.WriteIPagesToFile(list, client.Activations.ListNext, "TestListActivations");
+                var list = client.Activations.List("azurestack-activation");
+                Common.WriteIPagesToFile(list, client.Activations.ListNext, "TestListAzsAzureBridgeActivation");
             });
         }
 
         [Fact]
-        public void TestGetNonExistantActication()
+        public void TestGetAzsAzureBridgeActivationByName()
         {
             RunTest((client) => {
-                var activation = client.Activations.Get("azurestack-activation","nonexsting-activation");
-                Assert.Null(activation);
+                var activation = client.Activations.Get("azurestack-activation","default");
+                Assert.NotNull(activation);
             });
         }
 

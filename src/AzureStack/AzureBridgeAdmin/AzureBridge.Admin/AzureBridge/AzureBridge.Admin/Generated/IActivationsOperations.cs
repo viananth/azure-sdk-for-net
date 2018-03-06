@@ -82,6 +82,9 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         /// <param name='activation'>
         /// new activation.
         /// </param>
+        /// <param name='location'>
+        /// Resource location.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -97,7 +100,7 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ActivationResource>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroup, string activationName, Activation activation, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ActivationResource>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroup, string activationName, Activation activation, string location, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Delete an activation.
         /// </summary>
