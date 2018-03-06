@@ -1,0 +1,78 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/b7a57872-f429-4eb3-b26a-5108178380a5/providers/microsoft.gallery.admin/galleryItems/Microsoft.KeyVault.1.0.14?api-version=2015-04-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjdhNTc4NzItZjQyOS00ZWIzLWIyNmEtNTEwODE3ODM4MGE1L3Byb3ZpZGVycy9taWNyb3NvZnQuZ2FsbGVyeS5hZG1pbi9nYWxsZXJ5SXRlbXMvTWljcm9zb2Z0LktleVZhdWx0LjEuMC4xND9hcGktdmVyc2lvbj0yMDE1LTA0LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e6e45092-ce13-4710-ae05-8257947e4b94"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.26011.01",
+          "Microsoft.AzureStack.Management.Gallery.Admin.GalleryAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b7a57872-f429-4eb3-b26a-5108178380a5/providers/Microsoft.Gallery.Admin/galleryItems/Microsoft.KeyVault.1.0.14\",\r\n  \"name\": \"Microsoft.KeyVault.1.0.14\",\r\n  \"type\": \"Microsoft.Gallery.Admin/galleryItems\",\r\n  \"properties\": {\r\n    \"identity\": \"Microsoft.KeyVault.1.0.14\",\r\n    \"publisher\": \"Microsoft\",\r\n    \"publisherDisplayName\": \"Microsoft\",\r\n    \"itemName\": \"KeyVault\",\r\n    \"itemDisplayName\": \"Key Vault\",\r\n    \"version\": \"1.0.14\",\r\n    \"summary\": \"Safeguard cryptographic keys and other secrets used by cloud apps and services.\",\r\n    \"longSummary\": \"With Key Vault, there is no need to provision, configure, patch, and maintain Hardware Security Modules (HSMs) and key management software. You can provision new vaults and encryption keys (or import keys from your own HSMs) in minutes and centrally manage your encryption keys, secrets, and policies.\",\r\n    \"description\": \"<b>Enhance data protection and compliance</b><br/>Secure key management is essential to protecting data in the cloud. With Azure Key Vault, you can safeguard encryption keys and application secrets like passwords using keys stored in hardware security modules (HSMs). For added assurance, you can import or generate your encryption keys in HSMs. If you choose to do this, Microsoft will process your keys in FIPS 140-2 Level 2 validated HSMs (hardware and firmware). Key Vault is designed so that Microsoft does not see or extract your keys. Monitor and audit key use with Azure logging&ndash;pipe logs into Azure HDInsight or your SIEM for additional analysis and threat detection.<br/><br/><b>All of the control, none of the work</b><br/>With Key Vault, there's no need to provision, configure, patch, and maintain HSMs and key management software. You can provision new vaults and keys (or import keys from your own HSMs) in minutes and centrally manage keys, secrets, and policies. You maintain control over your keys&ndash;simply grant permission for your own and third-party applications to use them as needed. Applications never have direct access to keys. Developers easily manage keys used for Dev/Test and migrate seamlessly to production keys managed by security operations.<br/><br/><b>Boost performance and achieve global scale</b><br/>Improve performance and reduce the latency of cloud applications by storing cryptographic keys in the cloud instead of on-premises. Key Vault rapidly scales to meet the cryptographic needs of your cloud applications and match peak demand without the cost associated with deploying dedicated HSMs. You can achieve global redundancy by provisioning vaults in Azure global datacenters&ndash;keep a copy in your own HSMs for added durability.\",\r\n    \"uiDefinitionUri\": \"https://adminportal.local.azurestack.external:30015/artifact/20161101/Microsoft.KeyVault.1.0.14/UIDefinition.json\",\r\n    \"createdTime\": \"2018-01-26T23:38:10.3154098Z\",\r\n    \"changedTime\": \"2018-01-26T23:38:10.3165143Z\",\r\n    \"itemType\": \"GalleryItem\",\r\n    \"categoryIds\": [\r\n      \"Security\"\r\n    ],\r\n    \"screenshotUris\": [\r\n      \"https://adminportal.local.azurestack.external:30015/artifact/20161101/Microsoft.KeyVault.1.0.14/Screenshots/keyvaultexample.png\"\r\n    ],\r\n    \"links\": [\r\n      {\r\n        \"id\": \"0\",\r\n        \"displayName\": \"Documentation\",\r\n        \"uri\": \"https://azure.microsoft.com/documentation/services/key-vault/\"\r\n      },\r\n      {\r\n        \"id\": \"1\",\r\n        \"displayName\": \"Service Overview\",\r\n        \"uri\": \"https://azure.microsoft.com/services/key-vault/\"\r\n      },\r\n      {\r\n        \"id\": \"2\",\r\n        \"displayName\": \"Pricing Details\",\r\n        \"uri\": \"https://azure.microsoft.com/pricing/details/key-vault/\"\r\n      }\r\n    ],\r\n    \"filters\": [],\r\n    \"iconFileUris\": {\r\n      \"small\": \"https://adminportal.local.azurestack.external:30015/artifact/20161101/Microsoft.KeyVault.1.0.14/Icons/KeyVault_40x40.png\",\r\n      \"medium\": \"https://adminportal.local.azurestack.external:30015/artifact/20161101/Microsoft.KeyVault.1.0.14/Icons/KeyVault_90x90.png\",\r\n      \"large\": \"https://adminportal.local.azurestack.external:30015/artifact/20161101/Microsoft.KeyVault.1.0.14/Icons/KeyVault_115x115.png\",\r\n      \"wide\": \"https://adminportal.local.azurestack.external:30015/artifact/20161101/Microsoft.KeyVault.1.0.14/Icons/KeyVault_255x115.png\"\r\n    },\r\n    \"artifacts\": [\r\n      {\r\n        \"name\": \"CreateResource\",\r\n        \"uri\": \"https://adminportal.local.azurestack.external:30015/artifact/20161101/Microsoft.KeyVault.1.0.14/DeploymentTemplates/CreateResource.json\",\r\n        \"type\": \"template\"\r\n      }\r\n    ],\r\n    \"metadata\": {},\r\n    \"properties\": {},\r\n    \"images\": [\r\n      {\r\n        \"context\": \"ibiza\",\r\n        \"items\": [\r\n          {\r\n            \"id\": \"small\",\r\n            \"uri\": \"https://adminportal.local.azurestack.external:30015/artifact/20161101/Microsoft.KeyVault.1.0.14/Icons/KeyVault_40x40.png\",\r\n            \"type\": \"icon\"\r\n          },\r\n          {\r\n            \"id\": \"medium\",\r\n            \"uri\": \"https://adminportal.local.azurestack.external:30015/artifact/20161101/Microsoft.KeyVault.1.0.14/Icons/KeyVault_90x90.png\",\r\n            \"type\": \"icon\"\r\n          },\r\n          {\r\n            \"id\": \"large\",\r\n            \"uri\": \"https://adminportal.local.azurestack.external:30015/artifact/20161101/Microsoft.KeyVault.1.0.14/Icons/KeyVault_115x115.png\",\r\n            \"type\": \"icon\"\r\n          },\r\n          {\r\n            \"id\": \"wide\",\r\n            \"uri\": \"https://adminportal.local.azurestack.external:30015/artifact/20161101/Microsoft.KeyVault.1.0.14/Icons/KeyVault_255x115.png\",\r\n            \"type\": \"icon\"\r\n          },\r\n          {\r\n            \"id\": \"0\",\r\n            \"uri\": \"https://adminportal.local.azurestack.external:30015/artifact/20161101/Microsoft.KeyVault.1.0.14/Screenshots/keyvaultexample.png\",\r\n            \"type\": \"screenshot\"\r\n          }\r\n        ]\r\n      }\r\n    ],\r\n    \"products\": [],\r\n    \"definitionTemplates\": {\r\n      \"uiDefinitionFileUri\": \"https://adminportal.local.azurestack.external:30015/artifact/20161101/Microsoft.KeyVault.1.0.14/UIDefinition.json\",\r\n      \"defaultDeploymentTemplateId\": \"CreateResource\",\r\n      \"deploymentTemplateFileUris\": {\r\n        \"CreateResource\": \"https://adminportal.local.azurestack.external:30015/artifact/20161101/Microsoft.KeyVault.1.0.14/DeploymentTemplates/CreateResource.json\"\r\n      },\r\n      \"deploymentFragmentFileUris\": {}\r\n    },\r\n    \"additionalProperties\": {}\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "5465"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 06 Feb 2018 21:04:05 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-XSS-Protection": [
+          "1; mode=block"
+        ],
+        "x-ms-version": [
+          "5.2.1.325 (AzureUX-Store:master.baf839d1.171016-1355)"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14027"
+        ],
+        "x-ms-request-id": [
+          "d5299672-ff1d-413c-8533-3b7003557ec7"
+        ],
+        "x-ms-correlation-request-id": [
+          "d5299672-ff1d-413c-8533-3b7003557ec7"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20180206T210405Z:d5299672-ff1d-413c-8533-3b7003557ec7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "b7a57872-f429-4eb3-b26a-5108178380a5"
+  }
+}

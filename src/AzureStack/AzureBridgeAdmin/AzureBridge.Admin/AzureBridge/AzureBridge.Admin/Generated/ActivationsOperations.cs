@@ -51,8 +51,11 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         public AzureBridgeAdminClient Client { get; private set; }
 
         /// <summary>
-        /// Return product name.
+        /// Returns the list of activations.
         /// </summary>
+        /// <param name='resourceGroup'>
+        /// The resource group the resource is located under.
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -74,11 +77,15 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<ActivationResource>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<ActivationResource>>> ListWithHttpMessagesAsync(string resourceGroup, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroup == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroup");
             }
             if (Client.ApiVersion == null)
             {
@@ -91,13 +98,15 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroup", resourceGroup);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.AzureBridge.Admin/activations").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.AzureBridge.Admin/activations").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroup}", System.Uri.EscapeDataString(resourceGroup));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
             {
@@ -229,8 +238,11 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         }
 
         /// <summary>
-        /// Return product name.
+        /// Returns activation name.
         /// </summary>
+        /// <param name='resourceGroup'>
+        /// The resource group the resource is located under.
+        /// </param>
         /// <param name='activationName'>
         /// Name of the activation.
         /// </param>
@@ -255,11 +267,15 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ActivationResource>> GetWithHttpMessagesAsync(string activationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ActivationResource>> GetWithHttpMessagesAsync(string resourceGroup, string activationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroup == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroup");
             }
             if (activationName == null)
             {
@@ -276,14 +292,16 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroup", resourceGroup);
                 tracingParameters.Add("activationName", activationName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.AzureBridge.Admin/activations/{activationName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.AzureBridge.Admin/activations/{activationName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroup}", System.Uri.EscapeDataString(resourceGroup));
             _url = _url.Replace("{activationName}", System.Uri.EscapeDataString(activationName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
@@ -348,7 +366,7 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
             HttpStatusCode _statusCode = _httpResponse.StatusCode;
             cancellationToken.ThrowIfCancellationRequested();
             string _responseContent = null;
-            if ((int)_statusCode != 200)
+            if ((int)_statusCode != 200 && (int)_statusCode != 404)
             {
                 var ex = new CloudException(string.Format("Operation returned an invalid status code '{0}'", _statusCode));
                 try
@@ -418,6 +436,9 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         /// <summary>
         /// Create a new activation.
         /// </summary>
+        /// <param name='resourceGroup'>
+        /// The resource group the resource is located under.
+        /// </param>
         /// <param name='activationName'>
         /// Name of the activation.
         /// </param>
@@ -445,11 +466,15 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ActivationResource>> CreateOrUpdateWithHttpMessagesAsync(string activationName, Activation activation, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ActivationResource>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroup, string activationName, Activation activation, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroup == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroup");
             }
             if (activationName == null)
             {
@@ -470,6 +495,7 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroup", resourceGroup);
                 tracingParameters.Add("activationName", activationName);
                 tracingParameters.Add("activation", activation);
                 tracingParameters.Add("cancellationToken", cancellationToken);
@@ -477,8 +503,9 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.AzureBridge.Admin/activations/{activationName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.AzureBridge.Admin/activations/{activationName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroup}", System.Uri.EscapeDataString(resourceGroup));
             _url = _url.Replace("{activationName}", System.Uri.EscapeDataString(activationName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
@@ -619,6 +646,9 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         /// <summary>
         /// Delete an activation.
         /// </summary>
+        /// <param name='resourceGroup'>
+        /// The resource group the resource is located under.
+        /// </param>
         /// <param name='activationName'>
         /// Name of the activation.
         /// </param>
@@ -643,11 +673,15 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ActivationResource>> DeleteWithHttpMessagesAsync(string activationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ActivationResource>> DeleteWithHttpMessagesAsync(string resourceGroup, string activationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
+            }
+            if (resourceGroup == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroup");
             }
             if (activationName == null)
             {
@@ -664,14 +698,16 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("resourceGroup", resourceGroup);
                 tracingParameters.Add("activationName", activationName);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Delete", tracingParameters);
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.AzureBridge.Admin/activations/{activationName}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}/providers/Microsoft.AzureBridge.Admin/activations/{activationName}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
+            _url = _url.Replace("{resourceGroup}", System.Uri.EscapeDataString(resourceGroup));
             _url = _url.Replace("{activationName}", System.Uri.EscapeDataString(activationName));
             List<string> _queryParameters = new List<string>();
             if (Client.ApiVersion != null)
@@ -804,7 +840,7 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         }
 
         /// <summary>
-        /// Return product name.
+        /// Returns the list of activations.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

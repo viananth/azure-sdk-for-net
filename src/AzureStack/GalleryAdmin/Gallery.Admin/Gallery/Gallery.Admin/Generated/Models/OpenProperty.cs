@@ -15,6 +15,9 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// Open type used to define dynamic properties.
+    /// </summary>
     public partial class OpenProperty
     {
         /// <summary>
@@ -28,6 +31,7 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
         /// <summary>
         /// Initializes a new instance of the OpenProperty class.
         /// </summary>
+        /// <param name="properties">Dictionary of dynamic properties.</param>
         public OpenProperty(IDictionary<string, object> properties = default(IDictionary<string, object>))
         {
             Properties = properties;
@@ -40,6 +44,7 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets dictionary of dynamic properties.
         /// </summary>
         [JsonProperty(PropertyName = "properties")]
         public IDictionary<string, object> Properties { get; private set; }

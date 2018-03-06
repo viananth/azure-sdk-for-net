@@ -13,6 +13,9 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
     using Newtonsoft.Json;
     using System.Linq;
 
+    /// <summary>
+    /// Represents a filter item.
+    /// </summary>
     public partial class Filter
     {
         /// <summary>
@@ -26,6 +29,8 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
         /// <summary>
         /// Initializes a new instance of the Filter class.
         /// </summary>
+        /// <param name="type">Filter type.</param>
+        /// <param name="value">Filter value.</param>
         public Filter(string type = default(string), string value = default(string))
         {
             Type = type;
@@ -39,11 +44,13 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets filter type.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }
 
         /// <summary>
+        /// Gets or sets filter value.
         /// </summary>
         [JsonProperty(PropertyName = "value")]
         public string Value { get; set; }

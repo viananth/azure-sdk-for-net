@@ -15,6 +15,9 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// Holds UI definition file Uri and deployment template file URIs.
+    /// </summary>
     public partial class DefinitionTemplates
     {
         /// <summary>
@@ -28,6 +31,15 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
         /// <summary>
         /// Initializes a new instance of the DefinitionTemplates class.
         /// </summary>
+        /// <param name="uiDefinitionFileUri">UI definition file URI.</param>
+        /// <param name="defaultDeploymentTemplateId">Default deployment
+        /// template ID.</param>
+        /// <param name="deploymentTemplateFileUris">List of key-value
+        /// containing the deployment template file IDs defined in the package
+        /// manifest.</param>
+        /// <param name="deploymentFragmentFileUris">List of key-value pairs
+        /// containing the deployment fragment file IDs defined in the package
+        /// manifest.</param>
         public DefinitionTemplates(string uiDefinitionFileUri = default(string), string defaultDeploymentTemplateId = default(string), IDictionary<string, string> deploymentTemplateFileUris = default(IDictionary<string, string>), IDictionary<string, string> deploymentFragmentFileUris = default(IDictionary<string, string>))
         {
             UiDefinitionFileUri = uiDefinitionFileUri;
@@ -43,21 +55,27 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets UI definition file URI.
         /// </summary>
         [JsonProperty(PropertyName = "uiDefinitionFileUri")]
         public string UiDefinitionFileUri { get; set; }
 
         /// <summary>
+        /// Gets or sets default deployment template ID.
         /// </summary>
         [JsonProperty(PropertyName = "defaultDeploymentTemplateId")]
         public string DefaultDeploymentTemplateId { get; set; }
 
         /// <summary>
+        /// Gets list of key-value containing the deployment template file IDs
+        /// defined in the package manifest.
         /// </summary>
         [JsonProperty(PropertyName = "deploymentTemplateFileUris")]
         public IDictionary<string, string> DeploymentTemplateFileUris { get; private set; }
 
         /// <summary>
+        /// Gets list of key-value pairs containing the deployment fragment
+        /// file IDs defined in the package manifest.
         /// </summary>
         [JsonProperty(PropertyName = "deploymentFragmentFileUris")]
         public IDictionary<string, string> DeploymentFragmentFileUris { get; private set; }

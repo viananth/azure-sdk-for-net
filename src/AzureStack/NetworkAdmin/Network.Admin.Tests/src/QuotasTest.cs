@@ -49,16 +49,6 @@ namespace Network.Tests
         }
 
         [Fact]
-        public void TestListAllQuotas()
-        {
-            RunTest((client) =>
-            {
-                var quotas = client.Quotas.List(Location);
-                Assert.NotNull(quotas);
-            });
-        }
-
-        [Fact]
         public void TestPutAndDeleteQuota()
         {
             RunTest((client) =>

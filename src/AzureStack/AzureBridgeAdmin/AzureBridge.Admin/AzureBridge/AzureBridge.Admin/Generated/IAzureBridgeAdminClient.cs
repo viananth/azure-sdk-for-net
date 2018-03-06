@@ -71,11 +71,6 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
 
 
         /// <summary>
-        /// Gets the IPublishedProductsOperations.
-        /// </summary>
-        IPublishedProductsOperations PublishedProducts { get; }
-
-        /// <summary>
         /// Gets the IDownloadedProductsOperations.
         /// </summary>
         IDownloadedProductsOperations DownloadedProducts { get; }
@@ -89,11 +84,6 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         /// Gets the IActivationsOperations.
         /// </summary>
         IActivationsOperations Activations { get; }
-
-        /// <summary>
-        /// Gets the IRegistrationsOperations.
-        /// </summary>
-        IRegistrationsOperations Registrations { get; }
 
     }
 }

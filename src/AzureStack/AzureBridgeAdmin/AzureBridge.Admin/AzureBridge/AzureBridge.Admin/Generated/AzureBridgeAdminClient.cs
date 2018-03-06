@@ -76,11 +76,6 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         public bool? GenerateClientRequestId { get; set; }
 
         /// <summary>
-        /// Gets the IPublishedProductsOperations.
-        /// </summary>
-        public virtual IPublishedProductsOperations PublishedProducts { get; private set; }
-
-        /// <summary>
         /// Gets the IDownloadedProductsOperations.
         /// </summary>
         public virtual IDownloadedProductsOperations DownloadedProducts { get; private set; }
@@ -94,11 +89,6 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         /// Gets the IActivationsOperations.
         /// </summary>
         public virtual IActivationsOperations Activations { get; private set; }
-
-        /// <summary>
-        /// Gets the IRegistrationsOperations.
-        /// </summary>
-        public virtual IRegistrationsOperations Registrations { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the AzureBridgeAdminClient class.
@@ -301,12 +291,10 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         /// </summary>
         private void Initialize()
         {
-            PublishedProducts = new PublishedProductsOperations(this);
             DownloadedProducts = new DownloadedProductsOperations(this);
             Products = new ProductsOperations(this);
             Activations = new ActivationsOperations(this);
-            Registrations = new RegistrationsOperations(this);
-            BaseUri = new System.Uri("https://management.local.azurestack.external");
+            BaseUri = new System.Uri("https://adminmanagement.local.azurestack.external");
             ApiVersion = "2016-01-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;

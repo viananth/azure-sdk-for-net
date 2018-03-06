@@ -4,4 +4,4 @@
 ::
 
 @echo off
-call %~dp0..\..\..\..\tools\generate.cmd azsadmin/resource-manager/gallery latest deathly809 feature/azs.gallery.admin azure-rest-api-specs %CD%
+call %~dp0..\..\..\..\tools\generate.cmd azsadmin/resource-manager/gallery latest bganapa stack-admin azure-rest-api-specs %CD%

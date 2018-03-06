@@ -13,6 +13,9 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
     using Newtonsoft.Json;
     using System.Linq;
 
+    /// <summary>
+    /// Represents a REST operation.
+    /// </summary>
     public partial class Operation
     {
         /// <summary>
@@ -26,6 +29,9 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
         /// <summary>
         /// Initializes a new instance of the Operation class.
         /// </summary>
+        /// <param name="name">Name of the REST operation.</param>
+        /// <param name="origin">Origin of the REST operation.</param>
+        /// <param name="display">Information about the REST operation.</param>
         public Operation(string name = default(string), string origin = default(string), OperationDisplayDefinition display = default(OperationDisplayDefinition))
         {
             Name = name;
@@ -40,16 +46,19 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets name of the REST operation.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
 
         /// <summary>
+        /// Gets or sets origin of the REST operation.
         /// </summary>
         [JsonProperty(PropertyName = "origin")]
         public string Origin { get; set; }
 
         /// <summary>
+        /// Gets or sets information about the REST operation.
         /// </summary>
         [JsonProperty(PropertyName = "display")]
         public OperationDisplayDefinition Display { get; set; }

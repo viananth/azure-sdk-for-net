@@ -1,19 +1,19 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/57567fab-bab7-4071-9281-8efeda4c7995/providers/Microsoft.Network.Admin/locations/local/quotas/NonExistantQuota?api-version=2015-06-15",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc1NjdmYWItYmFiNy00MDcxLTkyODEtOGVmZWRhNGM3OTk1L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvcXVvdGFzL05vbkV4aXN0YW50UXVvdGE/YXBpLXZlcnNpb249MjAxNS0wNi0xNQ==",
+      "RequestUri": "/subscriptions/8827b0fb-6039-47eb-a7e8-35ca9d2a7a00/providers/Microsoft.Network.Admin/locations/local/quotas/NonExistantQuota?api-version=2015-06-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODgyN2IwZmItNjAzOS00N2ViLWE3ZTgtMzVjYTlkMmE3YTAwL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvcXVvdGFzL05vbkV4aXN0YW50UXVvdGE/YXBpLXZlcnNpb249MjAxNS0wNi0xNQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "63e3c3e5-4bd6-406b-a835-8a1c37db63e7"
+          "9c5aff1a-644f-4dae-a9a2-fdcb0eaaa45c"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.25211.01",
+          "FxVersion/4.6.26011.01",
           "Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient/0.1.0.0"
         ]
       },
@@ -26,7 +26,7 @@
           "no-cache"
         ],
         "Date": [
-          "Fri, 02 Mar 2018 22:17:07 GMT"
+          "Fri, 26 Jan 2018 23:31:28 GMT"
         ],
         "Pragma": [
           "no-cache"
@@ -35,19 +35,19 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "WWW-Authenticate": [
-          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvlC3Wvk+NctK8WlOuUidNlHnPGX7OIRyKCoE7ikceZ9U2SNuLDnybMnE8Zz43NJD1GmGQNuDG/Cv45asL9DeXtcXX/qRq3+o8Xq5zIJnCuioGdIPK6+szsN7n81Cu5KPgJkyFHv8eKH4zMmKl1YDo"
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvX9HcDgWv/zGwuhGoB7cMgW2GQfPpJKzmwJj54zQgsb4y98ol/gB9pe7PNEPXCcIYjnW37QStmAjdj4RpP47F9H6quaBsZM8NjiCDIkRp34/V7SIHuaz7xRSdeuaHS/jEeB8OegDftn0jkK1jjRgb"
         ],
         "x-ms-correlation-request-id": [
-          "1ec492e8-d783-4688-acfc-e06f1cceaebb"
+          "3ee5fdb1-4098-4581-874d-08019ec930a9"
         ],
         "x-ms-request-id": [
-          "a9a24907-069c-4dfb-885a-8e62fcaa5ce4"
+          "ad28db1a-88d4-41dc-ac90-5992d159a8b1"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1167"
+          "1193"
         ],
         "x-ms-routing-request-id": [
-          "LOCAL:20180302T221708Z:1ec492e8-d783-4688-acfc-e06f1cceaebb"
+          "LOCAL:20180126T233128Z:3ee5fdb1-4098-4581-874d-08019ec930a9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -61,6 +61,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "57567fab-bab7-4071-9281-8efeda4c7995"
+    "SubscriptionId": "8827b0fb-6039-47eb-a7e8-35ca9d2a7a00"
   }
 }

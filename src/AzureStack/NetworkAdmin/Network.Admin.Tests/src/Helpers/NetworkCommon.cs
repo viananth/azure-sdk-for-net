@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AzureStack.Management.Network.Admin.Models;
 
 namespace Network.Tests {
-
+    
     class NetworkCommon {
 
         public static bool CheckBaseResourcesAreSame(Resource expected, Resource found)
@@ -27,6 +27,13 @@ namespace Network.Tests {
             return resource != null &&
                 resource.Id == null &&
                 resource.Name != null;
+        }
+
+        public static bool ValidateBaseResourceTenant(ResourceTenant tenant)
+        {
+            return tenant != null &&
+                tenant.SubscriptionId == null &&
+                tenant.TenantResourceUri != null;
         }
 
         public static bool CheckBaseResourceTenantAreSame(ResourceTenant expected, ResourceTenant found)

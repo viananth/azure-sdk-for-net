@@ -1,26 +1,26 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/57567fab-bab7-4071-9281-8efeda4c7995/providers/Microsoft.Network.Admin/adminVirtualNetworks?api-version=2015-06-15",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNTc1NjdmYWItYmFiNy00MDcxLTkyODEtOGVmZWRhNGM3OTk1L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay5BZG1pbi9hZG1pblZpcnR1YWxOZXR3b3Jrcz9hcGktdmVyc2lvbj0yMDE1LTA2LTE1",
+      "RequestUri": "/subscriptions/8827b0fb-6039-47eb-a7e8-35ca9d2a7a00/providers/Microsoft.Network.Admin/adminVirtualNetworks?api-version=2015-06-15",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODgyN2IwZmItNjAzOS00N2ViLWE3ZTgtMzVjYTlkMmE3YTAwL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay5BZG1pbi9hZG1pblZpcnR1YWxOZXR3b3Jrcz9hcGktdmVyc2lvbj0yMDE1LTA2LTE1",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c8b70202-ff91-4c3e-9221-4ac1cb201bac"
+          "a3c43a81-558a-4d6f-8ad8-d10e4cb07208"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.25211.01",
+          "FxVersion/4.6.26011.01",
           "Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient/0.1.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"name\": \"testing-vnet\",\r\n      \"type\": \"Microsoft.Network.Admin/adminVirtualNetworks\",\r\n      \"location\": \"\",\r\n      \"id\": \"/subscriptions/57567fab-bab7-4071-9281-8efeda4c7995/providers/Microsoft.Network.Admin/adminVirtualNetworks/testing-vnet\",\r\n      \"properties\": {\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"configurationState\": {\r\n          \"status\": \"Success\",\r\n          \"lastUpdatedTime\": \"2018-03-02T14:17:40.6616399-08:00\",\r\n          \"virtualNetworkInterfaceErrors\": [],\r\n          \"hostErrors\": []\r\n        },\r\n        \"subscriptionId\": \"57567fab-bab7-4071-9281-8efeda4c7995\",\r\n        \"tenantResourceUri\": \"/subscriptions/57567fab-bab7-4071-9281-8efeda4c7995/resourceGroups/testing/providers/Microsoft.Network/virtualNetworks/testing-vnet\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"value\": []\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "816"
+          "19"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -32,7 +32,7 @@
           "no-cache"
         ],
         "Date": [
-          "Fri, 02 Mar 2018 22:17:40 GMT"
+          "Fri, 26 Jan 2018 23:32:00 GMT"
         ],
         "Pragma": [
           "no-cache"
@@ -41,19 +41,19 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "WWW-Authenticate": [
-          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvSURuEE9VbBHlZ/Bis9x0u+D3rML7h1Tiu1Fq5Tb+T9cFvm6mHPTk42SqDxi7HUbJ6iGne5PlaiacHuSJaV9U8WEKFYCcjx9Qyc9PPzQxDxEePRvvmqywMbeOe5dgNVD1VvTvMjJc+fq4iBrOnrit"
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvKQWrQXAn0k5T3ge90rzgKanCcLuxKtI86c7IK+xbv39I1hbbF9O6D/IOXPVz070WMTn2men072MAGzME3fUSfe5DrRShiB1/4Fye0crsSuwQPxLshcpqYjHGnKJLcGZv8P/mM9GqUsb10ykziD7o"
         ],
         "x-ms-correlation-request-id": [
-          "8e963da0-6186-422b-9c62-f39d6813ba8f"
+          "12e65e07-8405-4d69-9ae4-fa358a568014"
         ],
         "x-ms-request-id": [
-          "2299d00c-b2b8-4a19-9a13-03778f7433ab"
+          "2cc28ade-8d49-487b-b619-b96a7b7275cb"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14378"
+          "14740"
         ],
         "x-ms-routing-request-id": [
-          "LOCAL:20180302T221740Z:8e963da0-6186-422b-9c62-f39d6813ba8f"
+          "LOCAL:20180126T233200Z:12e65e07-8405-4d69-9ae4-fa358a568014"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -67,6 +67,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "57567fab-bab7-4071-9281-8efeda4c7995"
+    "SubscriptionId": "8827b0fb-6039-47eb-a7e8-35ca9d2a7a00"
   }
 }

@@ -14,7 +14,7 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
     using System.Linq;
 
     /// <summary>
-    /// Gallery item uri
+    /// Location of gallery item payload.
     /// </summary>
     public partial class GalleryItemUriPayload
     {
@@ -29,8 +29,8 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
         /// <summary>
         /// Initializes a new instance of the GalleryItemUriPayload class.
         /// </summary>
-        /// <param name="galleryItemUri">Gets or sets the gallery item
-        /// URI.</param>
+        /// <param name="galleryItemUri">URI for your gallery package that has
+        /// already been uploaded online.</param>
         public GalleryItemUriPayload(string galleryItemUri = default(string))
         {
             GalleryItemUri = galleryItemUri;
@@ -43,9 +43,10 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the gallery item URI.
+        /// Gets or sets URI for your gallery package that has already been
+        /// uploaded online.
         /// </summary>
-        [JsonProperty(PropertyName = "GalleryItemUri")]
+        [JsonProperty(PropertyName = "galleryItemUri")]
         public string GalleryItemUri { get; set; }
 
     }

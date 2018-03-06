@@ -4,4 +4,4 @@
 ::
 
 @echo off
-call %~dp0..\..\..\..\tools\generate.cmd azsadmin/resource-manager/azurebridge latest deathly809 feature/azs.azurebridge.admin azure-rest-api-specs %CD%
+call %~dp0..\..\..\..\tools\generate.cmd azsadmin/resource-manager/azurebridge latest bganapa stack-admin azure-rest-api-specs %CD%

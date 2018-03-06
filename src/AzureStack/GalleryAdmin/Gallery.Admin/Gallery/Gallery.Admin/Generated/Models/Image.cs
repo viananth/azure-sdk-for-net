@@ -13,6 +13,9 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
     using Newtonsoft.Json;
     using System.Linq;
 
+    /// <summary>
+    /// Represents an image item.
+    /// </summary>
     public partial class Image
     {
         /// <summary>
@@ -26,6 +29,9 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
         /// <summary>
         /// Initializes a new instance of the Image class.
         /// </summary>
+        /// <param name="id">ID of the image.</param>
+        /// <param name="uri">URI to the image.</param>
+        /// <param name="type">Type of image.</param>
         public Image(string id = default(string), string uri = default(string), string type = default(string))
         {
             Id = id;
@@ -40,16 +46,19 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets ID of the image.
         /// </summary>
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
 
         /// <summary>
+        /// Gets or sets URI to the image.
         /// </summary>
         [JsonProperty(PropertyName = "uri")]
         public string Uri { get; set; }
 
         /// <summary>
+        /// Gets or sets type of image.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; set; }

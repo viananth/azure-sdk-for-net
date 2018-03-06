@@ -11,7 +11,8 @@ namespace Network.Tests
 {
     public class NetworkTests : NetworkTestBase
     {
-        private void AssertAdminOverviewResourceHealth(AdminOverviewResourceHealth health) {
+        private void AssertAdminOverviewResourceHealth(AdminOverviewResourceHealth health) 
+        {
             Assert.NotNull(health);
             Assert.NotNull(health.ErrorResourceCount);
             Assert.NotNull(health.HealthUnknownCount);
@@ -20,15 +21,18 @@ namespace Network.Tests
             Assert.NotNull(health.ErrorResourceCount);
         }
 
-        private void AssertAdminOverviewResourceUsage(AdminOverviewResourceUsage usage) {
+        private void AssertAdminOverviewResourceUsage(AdminOverviewResourceUsage usage)
+        {
             Assert.NotNull(usage);
             Assert.NotNull(usage.InUseResourceCount);
             Assert.NotNull(usage.TotalResourceCount);
         }
 
         [Fact]
-        public void TestGetAdminOverview() {
-            RunTest((client) => {
+        public void TestGetAdminOverview()
+        {
+            RunTest((client) =>
+            {
                 var overview = client.ResourceProviderState.Get();
                 if (overview != null)
                 {

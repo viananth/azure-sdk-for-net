@@ -3,28 +3,14 @@
 // license information.
 //
 
+using Microsoft.AzureStack.Management.Network.Admin;
+using Microsoft.AzureStack.Management.Network.Admin.Models;
+using Xunit;
 
 namespace Network.Tests
 {
-    using Microsoft.AzureStack.Management.Network.Admin;
-    using Microsoft.AzureStack.Management.Network.Admin.Models;
-    using Xunit;
-
     public class LoadBalancers : NetworkTestBase
     {
-
-        private void ValidateLoadBalancer(LoadBalancer loadBalancer)
-        {
-            NetworkCommon.ValidateBaseResources(loadBalancer);
-
-            Assert.NotNull(loadBalancer.SubscriptionId);
-            Assert.NotNull(loadBalancer.TenantResourceUri);
-            Assert.NotNull(loadBalancer.PublicIpAddresses);
-            foreach (string IpAddress in loadBalancer.PublicIpAddresses)
-            {
-                Assert.NotNull(IpAddress);
-            }
-        }
         private void AssertLoadBalancersAreSame(LoadBalancer expected, LoadBalancer found)
         {
             if (expected == null)
@@ -34,16 +20,9 @@ namespace Network.Tests
             else
             {
                 Assert.True(NetworkCommon.CheckBaseResourcesAreSame(expected, found));
-                if (expected == null)
-                {
-                    Assert.Null(found);
-                }
-                else
-                {
-                    Assert.Equal(expected.ProvisioningState, found.ProvisioningState);
-                    Assert.Equal(expected.SubscriptionId, found.SubscriptionId);
-                    Assert.Equal(expected.TenantResourceUri, found.TenantResourceUri);
-                }
+
+                Assert.True(NetworkCommon.CheckBaseResourceTenantAreSame(expected, found));
+
                 Assert.Equal(expected.PublicIpAddresses, found.PublicIpAddresses);
             }
         }
@@ -59,7 +38,17 @@ namespace Network.Tests
                 {
                     balancers.ForEach((loadBalancer) =>
                     {
-                        ValidateLoadBalancer(loadBalancer);
+                        //var retrieved = client.LoadBalancers.Get(loadBalancer.Name);
+                        //AssertLoadBalancersAreSame(loadBalancer, retrieved);
+
+                        NetworkCommon.ValidateBaseResources(loadBalancer);
+
+                        NetworkCommon.ValidateBaseResourceTenant(loadBalancer);
+
+                        Assert.NotNull(loadBalancer.PublicIpAddresses);
+                        foreach(string IpAddress in loadBalancer.PublicIpAddresses) {
+                            Assert.NotNull(IpAddress);
+                        }
                     });
                 }
             });

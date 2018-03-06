@@ -18,7 +18,7 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
     using System.Linq;
 
     /// <summary>
-    /// Base Resource Object
+    /// Base Resource Object.
     /// </summary>
     public partial class Resource : IResource
     {
@@ -35,9 +35,9 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
         /// </summary>
         /// <param name="id">URI of the resource.</param>
         /// <param name="name">Name of the resource.</param>
-        /// <param name="type">Type of resource.</param>
-        /// <param name="location">Location where resource is location.</param>
-        /// <param name="tags">List of key value pairs.</param>
+        /// <param name="type">Type of the resource.</param>
+        /// <param name="location">Location of the resource.</param>
+        /// <param name="tags">List of key-value pairs.</param>
         public Resource(string id = default(string), string name = default(string), string type = default(string), string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
         {
             Id = id;
@@ -66,19 +66,19 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets type of resource.
+        /// Gets type of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "type")]
         public string Type { get; private set; }
 
         /// <summary>
-        /// Gets location where resource is location.
+        /// Gets location of the resource.
         /// </summary>
         [JsonProperty(PropertyName = "location")]
         public string Location { get; private set; }
 
         /// <summary>
-        /// Gets list of key value pairs.
+        /// Gets list of key-value pairs.
         /// </summary>
         [JsonProperty(PropertyName = "tags")]
         public IDictionary<string, string> Tags { get; private set; }

@@ -15,6 +15,9 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// Group of images.
+    /// </summary>
     public partial class ImageGroup
     {
         /// <summary>
@@ -28,6 +31,8 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
         /// <summary>
         /// Initializes a new instance of the ImageGroup class.
         /// </summary>
+        /// <param name="context">Image group identifier.</param>
+        /// <param name="items">List of images.</param>
         public ImageGroup(string context = default(string), IList<Image> items = default(IList<Image>))
         {
             Context = context;
@@ -41,11 +46,13 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets image group identifier.
         /// </summary>
         [JsonProperty(PropertyName = "context")]
         public string Context { get; set; }
 
         /// <summary>
+        /// Gets list of images.
         /// </summary>
         [JsonProperty(PropertyName = "items")]
         public IList<Image> Items { get; private set; }

@@ -27,12 +27,15 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
+            /// </param>
             /// <param name='activationName'>
             /// Name of the activation.
             /// </param>
-            public static IPage<DownloadedProductResource> List(this IDownloadedProductsOperations operations, string activationName)
+            public static IPage<DownloadedProductResource> List(this IDownloadedProductsOperations operations, string resourceGroup, string activationName)
             {
-                return operations.ListAsync(activationName).GetAwaiter().GetResult();
+                return operations.ListAsync(resourceGroup, activationName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -41,15 +44,18 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
+            /// </param>
             /// <param name='activationName'>
             /// Name of the activation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<DownloadedProductResource>> ListAsync(this IDownloadedProductsOperations operations, string activationName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<DownloadedProductResource>> ListAsync(this IDownloadedProductsOperations operations, string resourceGroup, string activationName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(activationName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroup, activationName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -61,15 +67,18 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
+            /// </param>
             /// <param name='activationName'>
             /// Name of the activation.
             /// </param>
             /// <param name='productName'>
             /// Name of the product.
             /// </param>
-            public static DownloadedProductResource Get(this IDownloadedProductsOperations operations, string activationName, string productName)
+            public static DownloadedProductResource Get(this IDownloadedProductsOperations operations, string resourceGroup, string activationName, string productName)
             {
-                return operations.GetAsync(activationName, productName).GetAwaiter().GetResult();
+                return operations.GetAsync(resourceGroup, activationName, productName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -77,6 +86,9 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
             /// </param>
             /// <param name='activationName'>
             /// Name of the activation.
@@ -87,9 +99,101 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DownloadedProductResource> GetAsync(this IDownloadedProductsOperations operations, string activationName, string productName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DownloadedProductResource> GetAsync(this IDownloadedProductsOperations operations, string resourceGroup, string activationName, string productName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(activationName, productName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroup, activationName, productName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Delete a downloaded product.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
+            /// </param>
+            /// <param name='activationName'>
+            /// Name of the activation.
+            /// </param>
+            /// <param name='productName'>
+            /// Name of the product.
+            /// </param>
+            public static DownloadedProductResource Delete(this IDownloadedProductsOperations operations, string resourceGroup, string activationName, string productName)
+            {
+                return operations.DeleteAsync(resourceGroup, activationName, productName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Delete a downloaded product.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
+            /// </param>
+            /// <param name='activationName'>
+            /// Name of the activation.
+            /// </param>
+            /// <param name='productName'>
+            /// Name of the product.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DownloadedProductResource> DeleteAsync(this IDownloadedProductsOperations operations, string resourceGroup, string activationName, string productName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroup, activationName, productName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Delete a downloaded product.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
+            /// </param>
+            /// <param name='activationName'>
+            /// Name of the activation.
+            /// </param>
+            /// <param name='productName'>
+            /// Name of the product.
+            /// </param>
+            public static DownloadedProductResource BeginDelete(this IDownloadedProductsOperations operations, string resourceGroup, string activationName, string productName)
+            {
+                return operations.BeginDeleteAsync(resourceGroup, activationName, productName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Delete a downloaded product.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroup'>
+            /// The resource group the resource is located under.
+            /// </param>
+            /// <param name='activationName'>
+            /// Name of the activation.
+            /// </param>
+            /// <param name='productName'>
+            /// Name of the product.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DownloadedProductResource> BeginDeleteAsync(this IDownloadedProductsOperations operations, string resourceGroup, string activationName, string productName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroup, activationName, productName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

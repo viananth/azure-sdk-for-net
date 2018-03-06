@@ -24,8 +24,11 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
     public partial interface IActivationsOperations
     {
         /// <summary>
-        /// Return product name.
+        /// Returns the list of activations.
         /// </summary>
+        /// <param name='resourceGroup'>
+        /// The resource group the resource is located under.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -41,10 +44,13 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<ActivationResource>>> ListWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<ActivationResource>>> ListWithHttpMessagesAsync(string resourceGroup, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Return product name.
+        /// Returns activation name.
         /// </summary>
+        /// <param name='resourceGroup'>
+        /// The resource group the resource is located under.
+        /// </param>
         /// <param name='activationName'>
         /// Name of the activation.
         /// </param>
@@ -63,10 +69,13 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ActivationResource>> GetWithHttpMessagesAsync(string activationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ActivationResource>> GetWithHttpMessagesAsync(string resourceGroup, string activationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Create a new activation.
         /// </summary>
+        /// <param name='resourceGroup'>
+        /// The resource group the resource is located under.
+        /// </param>
         /// <param name='activationName'>
         /// Name of the activation.
         /// </param>
@@ -88,10 +97,13 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ActivationResource>> CreateOrUpdateWithHttpMessagesAsync(string activationName, Activation activation, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ActivationResource>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroup, string activationName, Activation activation, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Delete an activation.
         /// </summary>
+        /// <param name='resourceGroup'>
+        /// The resource group the resource is located under.
+        /// </param>
         /// <param name='activationName'>
         /// Name of the activation.
         /// </param>
@@ -110,9 +122,9 @@ namespace Microsoft.AzureStack.Management.AzureBridge.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ActivationResource>> DeleteWithHttpMessagesAsync(string activationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ActivationResource>> DeleteWithHttpMessagesAsync(string resourceGroup, string activationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Return product name.
+        /// Returns the list of activations.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

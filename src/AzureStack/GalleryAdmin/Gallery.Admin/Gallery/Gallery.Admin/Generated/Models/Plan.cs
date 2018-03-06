@@ -13,6 +13,9 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
     using Newtonsoft.Json;
     using System.Linq;
 
+    /// <summary>
+    /// Represents a plan item read from the gallery item package.
+    /// </summary>
     public partial class Plan
     {
         /// <summary>
@@ -26,6 +29,10 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
         /// <summary>
         /// Initializes a new instance of the Plan class.
         /// </summary>
+        /// <param name="planId">Plan identifier.</param>
+        /// <param name="displayName">Display name of the plan.</param>
+        /// <param name="summary">Summary of the plan.</param>
+        /// <param name="description">Description of the plan.</param>
         public Plan(string planId = default(string), string displayName = default(string), string summary = default(string), string description = default(string))
         {
             PlanId = planId;
@@ -41,21 +48,25 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets or sets plan identifier.
         /// </summary>
         [JsonProperty(PropertyName = "planId")]
         public string PlanId { get; set; }
 
         /// <summary>
+        /// Gets or sets display name of the plan.
         /// </summary>
         [JsonProperty(PropertyName = "displayName")]
         public string DisplayName { get; set; }
 
         /// <summary>
+        /// Gets or sets summary of the plan.
         /// </summary>
         [JsonProperty(PropertyName = "summary")]
         public string Summary { get; set; }
 
         /// <summary>
+        /// Gets or sets description of the plan.
         /// </summary>
         [JsonProperty(PropertyName = "description")]
         public string Description { get; set; }

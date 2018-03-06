@@ -49,14 +49,14 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// Subscription credentials which uniquely identify Microsoft Azure
-        /// subscription.The subscription ID forms part of the URI for every service
+        /// Subscription credentials that uniquely identify Microsoft Azure
+        /// subscription. The subscription ID forms part of the URI for every service
         /// call.
         /// </summary>
         public string SubscriptionId { get; set; }
 
         /// <summary>
-        /// Client Api Version.
+        /// Client API Version.
         /// </summary>
         public string ApiVersion { get; private set; }
 
@@ -78,9 +78,9 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin
         public bool? GenerateClientRequestId { get; set; }
 
         /// <summary>
-        /// Gets the IRegistrationsOperations.
+        /// Gets the IGalleryItemsOperations.
         /// </summary>
-        public virtual IRegistrationsOperations Registrations { get; private set; }
+        public virtual IGalleryItemsOperations GalleryItems { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the GalleryAdminClient class.
@@ -283,8 +283,8 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin
         /// </summary>
         private void Initialize()
         {
-            Registrations = new RegistrationsOperations(this);
-            BaseUri = new System.Uri("https://management.local.azurestack.external");
+            GalleryItems = new GalleryItemsOperations(this);
+            BaseUri = new System.Uri("https://adminmanagement.local.azurestack.external");
             ApiVersion = "2015-04-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
@@ -320,7 +320,7 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin
             DeserializationSettings.Converters.Add(new CloudErrorJsonConverter());
         }
         /// <summary>
-        /// Gets the available operations.
+        /// Gets the available gallery admin operations.
         /// </summary>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -343,7 +343,7 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IEnumerable<Operation>>> OperationsWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IEnumerable<Operation>>> ListOperationsWithHttpMessagesAsync(Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (ApiVersion == null)
             {
@@ -357,7 +357,7 @@ namespace Microsoft.AzureStack.Management.Gallery.Admin
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                ServiceClientTracing.Enter(_invocationId, this, "Operations", tracingParameters);
+                ServiceClientTracing.Enter(_invocationId, this, "ListOperations", tracingParameters);
             }
             // Construct URL
             var _baseUrl = BaseUri.AbsoluteUri;
