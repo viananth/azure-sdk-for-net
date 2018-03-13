@@ -12,7 +12,8 @@ namespace KeyVault.Tests
     public class SubscriberUsageAggregateTests : KeyVaultTestBase
     {
 
-        private void ValidateQuota(Quota ua) {
+        private void ValidateQuota(Quota ua)
+        {
             Assert.NotNull(ua);
             Assert.NotNull(ua.Id);
             Assert.NotNull(ua.Name);
@@ -23,8 +24,10 @@ namespace KeyVault.Tests
         /// Test that we can retrieve subscriber ussage aggregates over the last two days.
         /// </summary>
         [Fact]
-        public void TestListSubscriberUsageAggregatesFromLastTwoDays() {
-            RunTest((client) => {
+        public void TestListQuotas()
+        {
+            RunTest((client) =>
+            {
 
                 var quotas = client.Quotas.List("local");
                 quotas.ForEach(ValidateQuota);
