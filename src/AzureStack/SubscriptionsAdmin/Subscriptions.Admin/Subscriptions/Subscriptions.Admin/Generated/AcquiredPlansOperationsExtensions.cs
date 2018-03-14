@@ -147,7 +147,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='newAcquiredPlan'>
             /// The new acquired plan.
             /// </param>
-            public static PlanAcquisition Create(this IAcquiredPlansOperations operations, string targetSubscriptionId, string planAcquisitionId, PlanAcquisitionProperties newAcquiredPlan)
+            public static PlanAcquisition Create(this IAcquiredPlansOperations operations, string targetSubscriptionId, string planAcquisitionId, PlanAcquisition newAcquiredPlan)
             {
                 return operations.CreateAsync(targetSubscriptionId, planAcquisitionId, newAcquiredPlan).GetAwaiter().GetResult();
             }
@@ -170,7 +170,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<PlanAcquisition> CreateAsync(this IAcquiredPlansOperations operations, string targetSubscriptionId, string planAcquisitionId, PlanAcquisitionProperties newAcquiredPlan, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<PlanAcquisition> CreateAsync(this IAcquiredPlansOperations operations, string targetSubscriptionId, string planAcquisitionId, PlanAcquisition newAcquiredPlan, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateWithHttpMessagesAsync(targetSubscriptionId, planAcquisitionId, newAcquiredPlan, null, cancellationToken).ConfigureAwait(false))
                 {

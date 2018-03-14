@@ -12,34 +12,21 @@ namespace Subscriptions.Tests
 {
     public class QuotaTests : SubscriptionsTestBase
     {
-
-        private void ValidateUsageAggregate(Quota ua) {
-            // Resource
-            Assert.NotNull(ua);
-            //Assert.NotNull(ua.Id);
-            //Assert.NotNull(ua.Location);
-            Assert.NotNull(ua.Name);
-            //Assert.NotNull(ua.Type);
-
-            // Quota
-            Assert.NotNull(ua.AllowCustomPortalBranding);
-        }
-
-        private void AssertSame(Quota expected, Quota given) {
-            // Resource
-            //Assert.Equal(expected.Id, given.Id);
-            //Assert.Equal(expected.Location, given.Location);
-            Assert.Equal(expected.Name, given.Name);
-            //Assert.Equal(expected.Type, given.Type);
-
-            // Quota
-            Assert.Equal(expected.AllowCustomPortalBranding, given.AllowCustomPortalBranding);
+        private void ValidateQuota(Quota quota)
+        {
+            Assert.NotNull(quota);
+            Assert.NotNull(quota.Id);
+            Assert.NotNull(quota.Location);
+            Assert.NotNull(quota.Name);
+            Assert.NotNull(quota.Type);
 
         }
-        //[Fact]
+
+        [Fact]
         public void TestListQuotas() {
             RunTest((client) => {
-                client.Quotas.List("local");
+                var quotas = client.Quotas.List("local");
+                quotas.ForEach(q => ValidateQuota(q));
             });
         }
     }

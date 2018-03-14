@@ -641,7 +641,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<PlanAcquisition>> CreateWithHttpMessagesAsync(string targetSubscriptionId, string planAcquisitionId, PlanAcquisitionProperties newAcquiredPlan, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<PlanAcquisition>> CreateWithHttpMessagesAsync(string targetSubscriptionId, string planAcquisitionId, PlanAcquisition newAcquiredPlan, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {

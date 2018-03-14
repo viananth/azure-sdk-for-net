@@ -30,32 +30,39 @@ namespace Subscriptions.Tests
             Assert.Equal(expected.Longitude, given.Longitude);
         }
 
-        ////[Fact]
-        //public void TestListLocations() {
-        //    RunTest((client) => {
-        //        var locations = client.Locations.List();
-        //        locations.ForEach(ValidateLocation);
-        //    });
-        //}
+        [Fact]
+        public void TestListLocations()
+        {
+            RunTest((client) =>
+            {
+                var locations = client.Locations.List();
+                locations.ForEach(ValidateLocation);
+            });
+        }
 
-        ////[Fact]
-        //public void TestGetAllLocations() {
-        //    RunTest((client) => {
-        //        var locations = client.Locations.List();
-        //        locations.ForEach((loc) => {
-        //            var result = client.Locations.Get(loc.Name);
-        //            AssertSame(loc, result);
-        //        });
-        //    });
-        //}
+        [Fact]
+        public void TestGetAllLocations()
+        {
+            RunTest((client) =>
+            {
+                var locations = client.Locations.List();
+                locations.ForEach((loc) =>
+                {
+                    var result = client.Locations.Get(loc.Name);
+                    AssertSame(loc, result);
+                });
+            });
+        }
 
-        ////[Fact]
-        //public void TestGetLocation() {
-        //    RunTest((client) => {
-        //        var loc = client.Locations.List().First();
-        //        var result = client.Locations.Get(loc.Name);
-        //        AssertSame(loc, result);
-        //    });
-        //}
+        [Fact]
+        public void TestGetLocation()
+        {
+            RunTest((client) =>
+            {
+                var loc = client.Locations.List().First();
+                var result = client.Locations.Get(loc.Name);
+                AssertSame(loc, result);
+            });
+        }
     }
 }

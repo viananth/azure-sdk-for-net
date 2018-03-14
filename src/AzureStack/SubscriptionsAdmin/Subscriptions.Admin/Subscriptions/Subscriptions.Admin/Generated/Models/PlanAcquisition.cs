@@ -10,15 +10,12 @@
 
 namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
 {
-    using Microsoft.Rest;
-    using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Represents the acquisition of an add-on plan for a subscription.
     /// </summary>
-    [Rest.Serialization.JsonTransformation]
     public partial class PlanAcquisition
     {
         /// <summary>
@@ -62,38 +59,38 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin.Models
         /// <summary>
         /// Gets or sets acquisition identifier.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.acquisitionId")]
+        [JsonProperty(PropertyName = "acquisitionId")]
         public string AcquisitionId { get; set; }
 
         /// <summary>
         /// Gets or sets identifier in the tenant subscription context.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.id")]
+        [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
 
         /// <summary>
         /// Gets or sets plan identifier in the tenant subscription context.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.planId")]
+        [JsonProperty(PropertyName = "planId")]
         public string PlanId { get; set; }
 
         /// <summary>
         /// Gets or sets external reference identifier.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.externalReferenceId")]
+        [JsonProperty(PropertyName = "externalReferenceId")]
         public string ExternalReferenceId { get; set; }
 
         /// <summary>
         /// Gets or sets state of the provisioning. Possible values include:
         /// 'NotSpecified', 'Accepted', 'Failed', 'Succeeded'
         /// </summary>
-        [JsonProperty(PropertyName = "properties.provisioningState")]
+        [JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState { get; set; }
 
         /// <summary>
         /// Gets or sets acquisition time.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.acquisitionTime")]
+        [JsonProperty(PropertyName = "acquisitionTime")]
         public System.DateTime? AcquisitionTime { get; set; }
 
     }

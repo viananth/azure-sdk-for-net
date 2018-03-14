@@ -36,7 +36,7 @@ namespace Subscriptions.Tests
             Assert.Equal(expected.SubscriptionId, given.SubscriptionId);
         }
 
-        //[Fact]
+        [Fact]
         public void TestListOfferDelegations() {
             RunTest((client) => {
                 var offers = client.Offers.ListAll();
@@ -48,7 +48,7 @@ namespace Subscriptions.Tests
             });
         }
 
-        //[Fact]
+        [Fact]
         public void TestListAllOfferDelegations() {
             RunTest((client) => {
                 var offers = client.Offers.ListAll();
@@ -63,6 +63,7 @@ namespace Subscriptions.Tests
             });
         }
 
+        [Fact]
         //Test asssumes that theres a offer delegation for the first offer
         public void TestGetOfferDelegation() {
             RunTest((client) => {
@@ -75,11 +76,11 @@ namespace Subscriptions.Tests
             });
         }
 
-        //[Fact]
+        [Fact]
         //Test assumes that there is a delegated provider(reseller) subscription
         public void TestCreateUpdateThenDeleteOfferDelegation() {
             RunTest((client) => {
-                var offer = client.Offers.ListAll().GetFirst();
+                var offer = client.Offers.ListAll().Where(o => !o.DisplayName.Equals("Default Offer")).First();
                 var subscription = client.Subscriptions.List(new Microsoft.Rest.Azure.OData.ODataQuery<Subscription>("providerNamespace eq 'Microsoft.Subscriptions'")).First();
                 var resourceGroup = Common.GetResourceGroupFromId(offer.Id);
                 var offerDelegationName = "testOfferDelegation";

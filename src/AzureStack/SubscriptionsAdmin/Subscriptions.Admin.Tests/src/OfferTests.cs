@@ -42,7 +42,7 @@ namespace Subscriptions.Tests
             });
             }
 
-        //[Fact]
+        [Fact]
         public void TestListOffers() {
             RunTest((client) => {
                 var allOffers = client.Offers.ListAll();
@@ -78,7 +78,7 @@ namespace Subscriptions.Tests
             });
         }
 
-        //[Fact]
+        [Fact]
         public void TestGetOffer() {
             RunTest((client) => {
                 var offer = client.Offers.ListAll().GetFirst();
@@ -88,9 +88,10 @@ namespace Subscriptions.Tests
             });
         }
 
+        [Fact]
         public void TestCreateUpdateThenDeleteOffer() {
             RunTest((client) => {
-                var rg = "balarg";
+                var rg = "testrg";
                 var offerName = "testOffer1";
                 var plan = client.Plans.ListAll().First();
                 var offer = new Offer()
@@ -106,9 +107,11 @@ namespace Subscriptions.Tests
 
                 var result = client.Offers.CreateOrUpdate(rg, offerName, offer);
 
-                offer = client.Offers.Get("balarg", offerName);
+                offer = client.Offers.Get("testrg", offerName);
 
-                client.Offers.Delete("TestOffer", offerName);
+                AssertSame(offer, result);
+
+                client.Offers.Delete("testrg", offerName);
             });
         }
     }

@@ -36,7 +36,7 @@ namespace Subscriptions.Tests
             Assert.Equal(expected.TenantId, given.TenantId);
         }
 
-        //[Fact]
+        [Fact]
         public void TestListDirectoryTenants() {
             RunTest((client) => {
                 var directoryTenants = client.DirectoryTenants.List("System.local");
@@ -44,7 +44,7 @@ namespace Subscriptions.Tests
             });
         }
 
-        //[Fact]
+        [Fact]
         public void TestGetAllDirectoryTenants() {
             RunTest((client) => {
                 var directoryTenants = client.DirectoryTenants.List("System.local");
@@ -55,7 +55,7 @@ namespace Subscriptions.Tests
             });
         }
 
-        //[Fact]
+        [Fact]
         public void TestGetDirectoryTenant() {
             RunTest((client) => {
                 var tenant = client.DirectoryTenants.List("System.local").GetFirst();

@@ -82,7 +82,7 @@ namespace Subscriptions.Tests
                 var subscription = client.Subscriptions.List().FirstOrDefault();
                 var plan = client.Plans.ListAll().First();
 
-                var newPlan = new PlanAcquisitionProperties()
+                var newPlan = new PlanAcquisition()
                 {
                     AcquisitionId = Guid.NewGuid().ToString(),
                     PlanId = plan.Id

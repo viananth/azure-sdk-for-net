@@ -120,7 +120,7 @@ namespace Microsoft.AzureStack.Management.Subscriptions.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<PlanAcquisition>> CreateWithHttpMessagesAsync(string targetSubscriptionId, string planAcquisitionId, PlanAcquisitionProperties newAcquiredPlan, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<PlanAcquisition>> CreateWithHttpMessagesAsync(string targetSubscriptionId, string planAcquisitionId, PlanAcquisition newAcquiredPlan, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get a collection of all acquired plans that subscription has access
         /// to.
