@@ -28,10 +28,11 @@ namespace Subscriptions.Tests
             // Subscription
         }
 
-        //[Fact]
+        [Fact]
         public void TestListSubscriptions() {
             RunTest((client) => {
                 var subscriptions = client.Subscriptions.List();
+                Assert.NotNull(subscriptions);
             });
         }
 
@@ -40,14 +41,55 @@ namespace Subscriptions.Tests
         {
             RunTest((client) =>
             {
-                client.Subscriptions.CheckNameAvailability(new CheckNameAvailabilityDefinition());
+                var result = client.Subscriptions.CheckNameAvailability(new CheckNameAvailabilityDefinition(
+                    name: "Test Sub", resourceType: "Microsoft.Storage/storageAccounts"));
+                Assert.NotNull(result);
             });
         }
 
-        //[Fact]
+        [Fact]
         public void ListAdminOperations() {
             RunTest((client) => {
-                client.ListOperations();
+                var adminOperations = client.ListOperations();
+                Assert.NotNull(adminOperations);
+                Assert.NotEmpty(adminOperations.Value);
+            });
+        }
+
+        [Fact]
+        public void CreateUpdateDeleteSubscription()
+        {
+            RunTest((client) =>
+            {
+                var subscriptionId = Guid.NewGuid().ToString();
+                var delProviderSubId = Environment.GetEnvironmentVariable("SubscriptionId");
+                var tenantId = Environment.GetEnvironmentVariable("AADTenant");
+                var offer = client.Offers.ListAll().GetFirst();
+
+                var subscription = new Subscription(
+                    delegatedProviderSubscriptionId: delProviderSubId,
+                    displayName: "Test Subscription",
+                    offerId: offer.Id,
+                    owner: "tenantadmin1@msazurestack.onmicrosoft.com",
+                    subscriptionId: subscriptionId,
+                    state: SubscriptionState.Enabled,
+                    tenantId: tenantId);
+
+                var result = client.Subscriptions.CreateOrUpdate(
+                    subscription: subscriptionId,                    
+                    newSubscription: subscription);
+
+                ValidateSubscription(result);
+
+                var createdSubscription = (client.Subscriptions.Get(subscriptionId));
+
+                AssertSame(result, createdSubscription);
+
+                client.Subscriptions.Delete(subscriptionId);
+
+                var deletedSubscription = client.Subscriptions.Get(subscriptionId);
+
+                Assert.Null(deletedSubscription);
             });
         }
     }

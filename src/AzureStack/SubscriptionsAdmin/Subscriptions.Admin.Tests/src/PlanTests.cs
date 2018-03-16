@@ -63,7 +63,7 @@ namespace Subscriptions.Tests
                 var location = "local";
                 var rg = "testrg";
                 var name = "testplans";
-                var descriptiopn = "description of the plan";
+                var description = "description of the plan";
 
                 var quota = client.Quotas.List(location).First();
 
@@ -74,7 +74,7 @@ namespace Subscriptions.Tests
                         planName: name,
                         displayName: name,
                         location: location,
-                        description: name,
+                        description: description,
                         quotaIds: new List<string> { quota.Id }
                     ));
 
