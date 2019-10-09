@@ -1,0 +1,1 @@
+Start-AutoRestCodeGeneration -ResourceProvider "azsadmin/resource-manager/deployment" -AutoRestVersion "latest" -SpecsRepoBranch "drpadmin" -SdkRootDirectory "$PSScriptRoot" -SpecsRepoFork "viananth" -SdkRepoRootPath "D:\github\azure-sdk-for-net"
